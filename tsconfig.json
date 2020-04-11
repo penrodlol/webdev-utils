@@ -2,6 +2,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@auth/*": ["src/app/auth/*"],
+      "@demo/*": ["src/app/demo/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebDevUtilsRoutes } from './routes';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'webdev-utils';
+  routes = WebDevUtilsRoutes;
 }

@@ -1,0 +1,14 @@
+@import 'variables';
+
+#mat-sidenav-container {
+    height: 100%;
+    #mat-sidenav {
+        min-width: 150px;
+        .mat-route {
+            display: flex;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: $large-font
+        }   
+    }
+}
