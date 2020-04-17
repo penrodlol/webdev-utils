@@ -1,0 +1,29 @@
+#login, #signup  {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+
+    .mat-card-header {
+        margin-bottom: 20px;
+        .mat-card-header-text { width: 100%;}
+    }
+
+    .mat-card-content .mat-form-field,
+    .mat-card-actions button {
+        width: 75%;
+    }
+
+    .google-btn {
+        width: 50% !important;
+        margin-top: 20px;
+        padding: .3rem;
+        .mat-icon {
+            width: 40px;
+            height:30px;
+        }
+    }
+
+    .mat-card-footer button {
+        width: 100%;
+    }
+}

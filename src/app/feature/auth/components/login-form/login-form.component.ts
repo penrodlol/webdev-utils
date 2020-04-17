@@ -1,15 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { IAuthUserState } from '@feature/auth/state/auth-user.state';
+import { AuthUserActions } from '@feature/auth/actions';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
+  loginForm: FormGroup
 
-  constructor() { }
+  constructor(
+    private store: Store<IAuthUserState>,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: this.fb.control(null, [Validators.required, Validators.email]),
+      password: this.fb.control(null, Validators.required)
+    })
   }
 
+  googleLogin = () => this.store.dispatch(AuthUserActions.googleLogin());
+
+  standardLogin = () => this.store.dispatch(AuthUserActions.standardLogin(
+    this.loginForm.get('email').value,
+    this.loginForm.get('password').value
+  ));
 }

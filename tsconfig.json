@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@auth/*": ["src/app/feature/auth/*"]
+      "@feature/auth/*": ["src/app/feature/auth/*"],
+      "@feature/home/*": ["src/app/feature/home/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
