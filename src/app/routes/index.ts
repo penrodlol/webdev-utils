@@ -5,8 +5,7 @@ interface IWebDevUtilsRoutes {
 }
 
 const routes: IWebDevUtilsRoutes[] = [
-    { path: '', icon: 'home', label: 'Home' },
-    { path: 'auth', icon: 'https', label: 'Login' }
+    { path: '', icon: 'https', label: 'Login' }
 ]
 
 export { routes as WebDevUtilsRoutes }
