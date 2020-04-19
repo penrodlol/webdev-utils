@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebDevUtilsRoutes } from './routes';
 import { Store } from '@ngrx/store';
 import { IAuthUserState } from '@feature/auth/state/auth-user.state';
-import { AuthUserActions, AuthApiActions } from '@feature/auth/actions';
+import { AuthUserActions } from '@feature/auth/actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.afAuth.authState
       .pipe(takeWhile(auth => auth != null))
       .subscribe(auth => {
-        this.store.dispatch(AuthApiActions.loginSuccess(
+        this.store.dispatch(AuthUserActions.returningLogin(
           auth.uid,
           auth.email,
           auth?.displayName,
