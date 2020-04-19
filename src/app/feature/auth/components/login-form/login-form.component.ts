@@ -11,6 +11,7 @@ import { AuthUserActions } from '@feature/auth/actions';
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup
+  passwordHidden = true;
 
   constructor(
     private store: Store<IAuthUserState>,
@@ -24,9 +25,9 @@ export class LoginFormComponent implements OnInit {
     })
   }
 
-  googleLogin = () => this.store.dispatch(AuthUserActions.googleLogin());
+  googleLogin = () => this.store.dispatch(AuthUserActions.login());
 
-  standardLogin = () => this.store.dispatch(AuthUserActions.standardLogin(
+  standardLogin = () => this.store.dispatch(AuthUserActions.login(
     this.loginForm.get('email').value,
     this.loginForm.get('password').value
   ));
