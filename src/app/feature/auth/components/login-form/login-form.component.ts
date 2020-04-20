@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { IAuthUserState } from '@feature/auth/state/auth-user.state';
 import { AuthUserActions } from '@feature/auth/actions';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'login-form',
@@ -15,8 +17,13 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private store: Store<IAuthUserState>,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
+    const googleSvgUrl = 'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg';
+    this.matIconRegistry.addSvgIcon('google-logo', this.domSanitizer.bypassSecurityTrustResourceUrl(googleSvgUrl));
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

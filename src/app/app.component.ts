@@ -5,7 +5,6 @@ import { IAuthUserState } from '@feature/auth/state/auth-user.state';
 import { AuthUserActions } from '@feature/auth/actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -23,17 +22,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.afAuth.authState
-      .pipe(takeWhile(auth => auth != null))
-      .subscribe(auth => {
-        this.store.dispatch(AuthUserActions.returningLogin(
-          auth.uid,
-          auth.email,
-          auth?.displayName,
-          auth?.photoURL
-        ));
-        this.router.navigate(['home']);
-      });
   }
 
   logout = () => this.store.dispatch(AuthUserActions.logout());

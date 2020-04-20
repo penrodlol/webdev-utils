@@ -5,8 +5,9 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth
 const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['']);
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'auth' },
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('@feature/auth/auth.module').then(m => m.AuthModule)
   },
   {
