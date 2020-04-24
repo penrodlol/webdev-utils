@@ -3,7 +3,7 @@
         <mat-card-title>Web Dev Utils Signup</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]='signupForm'>
+        <form [formGroup]='signupForm' appPasswordMatchValidator>
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
@@ -32,11 +32,13 @@
                     [type]="passwordHidden ? 'password' : 'text'">
             </mat-form-field>
         </form>
+        <mat-error>{{signupForm.errors?.passwordMismatch.value}}</mat-error>
     </mat-card-content>
     <mat-card-actions>
         <button
             mat-raised-button
-            [disabled]='signupForm.invalid'>
+            [disabled]='signupForm.invalid'
+            (click)='sendEmailVerification()'>
             Send Email Verification
         </button>
     </mat-card-actions>

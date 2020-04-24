@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects/auth.effects';
+import { PasswordMatchValidatorDirective } from './components/signup-form/directives/password-match-validator.directive';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -17,7 +18,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     LoginFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    PasswordMatchValidatorDirective
   ],
   imports: [
     CommonModule,

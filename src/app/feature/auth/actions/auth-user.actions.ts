@@ -11,4 +11,9 @@ export const returningLogin = createAction(
         ({ uid, displayName, email, photoURL })
 );
 
+export const signup = createAction(
+    '[Auth/User] Signup',
+    (email: string, password: string) => ({ email, password })
+);
+
 export const logout = createAction('[Auth/User] Logout');

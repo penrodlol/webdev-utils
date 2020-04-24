@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IAuthUserState } from '@feature/auth/state/auth-user.state';
 import { Store } from '@ngrx/store';
+import { AuthUserActions } from '@feature/auth/actions';
 
 @Component({
   selector: 'signup-form',
@@ -9,7 +10,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./signup-form.component.scss']
 })
 export class SignupFormComponent implements OnInit {
-  signupForm: FormGroup
+  signupForm: FormGroup;
   passwordHidden = true;
 
   constructor(
@@ -22,7 +23,14 @@ export class SignupFormComponent implements OnInit {
       email: this.fb.control(null, [Validators.required, Validators.email]),
       password: this.fb.control(null, Validators.required),
       passwordRepeat: this.fb.control(null, Validators.required)
-    })
+    });
+  }
+
+  sendEmailVerification() {
+    this.store.dispatch(AuthUserActions.signup(
+      this.signupForm.get('email').value,
+      this.signupForm.get('password').value
+    ));
   }
 
 }
