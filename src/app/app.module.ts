@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './shared/reducers';
 import { metaReducers } from './shared/metareducers';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from '@feature/auth/effects/auth.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +33,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreDevtoolsModule.instrument(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([AuthEffects])
   ],
   bootstrap: [AppComponent]
 })

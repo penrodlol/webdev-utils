@@ -7,7 +7,7 @@ export const authReducer = createReducer(
     on(
         AuthApiActions.loginSuccess,
         AuthUserActions.returningLogin,
-        (state, actions) => {
+        (_state, actions) => {
             return {
                 uid: actions.uid,
                 displayName: actions.displayName,

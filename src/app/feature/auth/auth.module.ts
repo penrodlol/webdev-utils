@@ -5,8 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './effects/auth.effects';
 import { PasswordMatchValidatorDirective } from './components/signup-form/directives/password-match-validator.directive';
 
 const routes: Routes = [
@@ -25,8 +23,7 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    EffectsModule.forFeature([AuthEffects])
+    RouterModule.forChild(routes)
   ]
 })
 export class AuthModule { }
