@@ -23,8 +23,8 @@ export class AuthEffects {
                     this.snackbarService.triggerSnackBar(`Welcome ${auth.user.displayName || auth.user.email}!`);
                     return AuthApiActions.loginSuccess(
                         auth.user.uid,
-                        auth.user.email,
                         auth.user?.displayName,
+                        auth.user.email,
                         auth.user?.photoURL
                     );
                 }),

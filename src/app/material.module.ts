@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFileUploadModule } from 'mat-file-upload';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -21,7 +23,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFileUploadModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

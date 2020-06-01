@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar *ngIf="authUser$ | async">
   <button (click)='sidenav.toggle()' mat-mini-fab>
     <mat-icon>menu</mat-icon>
   </button>
@@ -7,6 +7,8 @@
 <mat-sidenav-container id="mat-sidenav-container">
   <mat-sidenav #sidenav mode='side' id="mat-sidenav">
     <nav>
+      <user-header></user-header>
+      <mat-divider></mat-divider>
       <a
         mat-button
         class="mat-route"

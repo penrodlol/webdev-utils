@@ -6,6 +6,7 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
 import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PasswordMatchValidatorDirective } from './components/signup-form/directives/password-match-validator.directive';
+import { ProfileImageUploadComponent } from './components/profile-image-upload/profile-image-upload.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -17,7 +18,8 @@ const routes: Routes = [
   declarations: [
     LoginFormComponent,
     SignupFormComponent,
-    PasswordMatchValidatorDirective
+    PasswordMatchValidatorDirective,
+    ProfileImageUploadComponent
   ],
   imports: [
     CommonModule,

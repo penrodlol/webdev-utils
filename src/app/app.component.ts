@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebDevUtilsRoutes } from './routes';
 import { Store } from '@ngrx/store';
 import { IAuthUserState } from '@feature/auth/state/auth-user.state';
 import { AuthUserActions } from '@feature/auth/actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { takeWhile } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,10 @@ import { takeWhile } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'webdev-utils';
+  @ViewChild('sidenav') sideNav: MatSidenav;
+
   routes = WebDevUtilsRoutes;
+  authUser$: Observable<firebase.User> = this.afAuth.user;
 
   constructor(
     private store: Store<IAuthUserState>,
@@ -21,7 +25,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.afAuth.authState
+    this.authUser$
       .pipe(takeWhile(user => user != null))
       .subscribe(user => {
         this.store.dispatch(AuthUserActions.returningLogin(
@@ -33,5 +37,8 @@ export class AppComponent implements OnInit {
       });
   }
 
-  logout = () => this.store.dispatch(AuthUserActions.logout());
+  logout = () => {
+    this.sideNav.close();
+    this.store.dispatch(AuthUserActions.logout()); 
+  }
 }

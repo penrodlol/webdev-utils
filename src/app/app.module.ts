@@ -18,6 +18,7 @@ import { reducers } from './shared/reducers';
 import { metaReducers } from './shared/metareducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from '@feature/auth/effects/auth.effects';
+import { UserHeaderModule } from '@feature/auth/components/user-header/user-header.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,10 +28,10 @@ import { AuthEffects } from '@feature/auth/effects/auth.effects';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
+    UserHeaderModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
-    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([AuthEffects])
