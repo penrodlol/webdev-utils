@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, tap, switchMap, mergeMap } from 'rxjs/operators';
-import { AuthService } from '../services/auth.service';
-import { AuthUserActions, AuthApiActions } from '../actions';
+import { AuthService } from '../../../../feature/auth/services/auth.service';
+import { AuthUserActions, AuthApiActions } from '../../../../feature/auth/actions';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/shared/snackbar/services/snackbar.service';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 
 
 @Injectable()

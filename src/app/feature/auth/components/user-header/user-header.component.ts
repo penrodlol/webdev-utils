@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AuthSelectors } from 'src/app/shared/selectors/auth';
-import { WebDevUtilsState } from 'src/app/shared/reducers';
+import { AuthSelectors } from 'src/app/shared/state/auth/selectors';
+import { WebDevUtilsState } from 'src/app/shared/state';
 import { DialogService } from 'src/app/shared/dialog/services/dialog.service';
 import { ProfileImageUploadComponent } from '../profile-image-upload/profile-image-upload.component';
+import { AngularFireStorage } from "@angular/fire/storage";
 
 @Component({
   selector: 'user-header',
@@ -18,7 +19,8 @@ export class UserHeaderComponent implements OnInit {
 
   constructor(
     private store: Store<WebDevUtilsState>,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private afStorage: AngularFireStorage
   ) { }
 
   ngOnInit(): void { }
@@ -27,7 +29,11 @@ export class UserHeaderComponent implements OnInit {
     this.dialogService.openDialog({
       title: 'Add Profile Image',
       component: ProfileImageUploadComponent
-    }).subscribe((selectedImage: string | null) => { });
+    }).subscribe((selectedImage: File | null) => {
+      this.afStorage.upload(
+        `profile-images/${selectedImage.name}`,
+        selectedImage,
+      );
+    });
   }
-
 }

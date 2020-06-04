@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialAuthUserState } from '@feature/auth/state/auth-user.state';
+import { initialAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
 import { AuthApiActions, AuthUserActions } from '@feature/auth/actions';
 
 export const authReducer = createReducer(

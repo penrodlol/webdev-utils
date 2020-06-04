@@ -18,8 +18,7 @@ export class ProfileImageUploadComponent implements OnInit {
   }
 
   uploadProfileImage(fileList: FileList) {
-    const imageName = fileList[0].name;
-    this.dialogRef.close(imageName);
+    this.dialogRef.close(fileList[0]);
   }
 
 }

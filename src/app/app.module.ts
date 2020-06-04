@@ -14,10 +14,10 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './shared/reducers';
+import { reducers } from './shared/state';
 import { metaReducers } from './shared/metareducers';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from '@feature/auth/effects/auth.effects';
+import { AuthEffects } from 'src/app/shared/state/auth/effects/auth.effects';
 import { UserHeaderModule } from '@feature/auth/components/user-header/user-header.module';
 
 @NgModule({

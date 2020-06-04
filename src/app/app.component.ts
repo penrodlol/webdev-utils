@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebDevUtilsRoutes } from './routes';
 import { Store } from '@ngrx/store';
-import { IAuthUserState } from '@feature/auth/state/auth-user.state';
+import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
 import { AuthUserActions } from '@feature/auth/actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { takeWhile } from 'rxjs/operators';

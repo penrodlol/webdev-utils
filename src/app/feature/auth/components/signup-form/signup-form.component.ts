@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IAuthUserState } from '@feature/auth/state/auth-user.state';
+import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
 import { Store } from '@ngrx/store';
 import { AuthUserActions } from '@feature/auth/actions';
 
