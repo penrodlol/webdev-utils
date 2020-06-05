@@ -11,7 +11,10 @@ export const loginFailure = createAction(
     (error: string) => ({ error })
 );
 
-export const signupSuccess = createAction('[Auth/Api] Signup Success');
+export const signupSuccess = createAction(
+    '[Auth/Api] Signup Success',
+    (displayName: string) => ({ displayName })
+);
 
 export const signupFailure = createAction(
     '[Auth/Api] Signup Failure',

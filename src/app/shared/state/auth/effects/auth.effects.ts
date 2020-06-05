@@ -45,7 +45,7 @@ export class AuthEffects {
                     auth.user.sendEmailVerification();
                     this.snackbarService.triggerSnackBar(`Check ${auth.user.email} for email verification`);
                     this.router.navigate(['auth/login']);
-                    return AuthApiActions.signupSuccess();
+                    return AuthApiActions.signupSuccess(actions.displayName);
                 }),
                 catchError(error => {
                     this.snackbarService.triggerSnackBar(error.message);
@@ -54,6 +54,11 @@ export class AuthEffects {
             )
         )
     ));
+
+    updateProfileDisplayName = createEffect(() => this.actions$.pipe(
+        ofType(AuthApiActions.signupSuccess),
+        mergeMap(actions => this.authService.updateDisplayName(actions.displayName))
+    ), { dispatch: false });
 
     logout$ = createEffect(() => this.actions$.pipe(
         ofType(AuthUserActions.logout),

@@ -21,6 +21,7 @@ export class SignupFormComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       email: this.fb.control(null, [Validators.required, Validators.email]),
+      displayName: this.fb.control(null),
       password: this.fb.control(null, Validators.required),
       passwordRepeat: this.fb.control(null, Validators.required)
     });
@@ -29,6 +30,7 @@ export class SignupFormComponent implements OnInit {
   sendEmailVerification() {
     this.store.dispatch(AuthUserActions.signup(
       this.signupForm.get('email').value,
+      this.signupForm.get('displayName').value,
       this.signupForm.get('password').value
     ));
   }

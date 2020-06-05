@@ -13,7 +13,7 @@ export const returningLogin = createAction(
 
 export const signup = createAction(
     '[Auth/User] Signup',
-    (email: string, password: string) => ({ email, password })
+    (email: string, displayName: string, password: string) => ({ email, displayName, password })
 );
 
 export const logout = createAction('[Auth/User] Logout');

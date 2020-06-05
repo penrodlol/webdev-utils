@@ -30,5 +30,7 @@ export class AuthService {
 
   logout = () => this.afAuth.signOut();
 
+  updateDisplayName = (displayName: string): Observable<void> => from(firebase.auth().currentUser.updateProfile({ displayName }));
+
   updatePhotoURL = (photoURL: string): Observable<void> => from(firebase.auth().currentUser.updateProfile({ photoURL }));
 }
