@@ -17,3 +17,23 @@ export const signupFailure = createAction(
     '[Auth/Api] Signup Failure',
     (error: string) => ({ error })
 );
+
+export const photoURLUploadSuccess = createAction(
+    '[Auth/Api] Photo Url Upload Success',
+    (storageRef: string) => ({ storageRef })
+);
+
+export const photoURLUploadFailure = createAction(
+    '[Auth/Api] Photo Url Upload Failure',
+    (error: string) => ({ error })
+);
+
+export const downloadURLRetrievalSuccess = createAction(
+    '[Auth/Api] Download Url Retrieval Success',
+    (downloadURL: string) => ({ downloadURL })
+);
+
+export const downloadURLRetrievalFailure = createAction(
+    '[Auth/Api] Download Url Retrieval Failure',
+    (error: string) => ({ error })
+);

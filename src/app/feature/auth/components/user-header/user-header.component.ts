@@ -5,7 +5,8 @@ import { AuthSelectors } from 'src/app/shared/state/auth/selectors';
 import { WebDevUtilsState } from 'src/app/shared/state';
 import { DialogService } from 'src/app/shared/dialog/services/dialog.service';
 import { ProfileImageUploadComponent } from '../profile-image-upload/profile-image-upload.component';
-import { AngularFireStorage } from "@angular/fire/storage";
+import { AuthUserActions } from '@feature/auth/actions';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'user-header',
@@ -19,8 +20,7 @@ export class UserHeaderComponent implements OnInit {
 
   constructor(
     private store: Store<WebDevUtilsState>,
-    private dialogService: DialogService,
-    private afStorage: AngularFireStorage
+    private dialogService: DialogService
   ) { }
 
   ngOnInit(): void { }
@@ -29,11 +29,15 @@ export class UserHeaderComponent implements OnInit {
     this.dialogService.openDialog({
       title: 'Add Profile Image',
       component: ProfileImageUploadComponent
-    }).subscribe((selectedImage: File | null) => {
-      this.afStorage.upload(
-        `profile-images/${selectedImage.name}`,
-        selectedImage,
-      );
-    });
+    })
+      .pipe(takeWhile((selectedImage: File | null) => selectedImage != null))
+      .subscribe((selectedImage: File) => {
+        this.store.select(AuthSelectors.selectUID).subscribe(uid => {
+          this.store.dispatch(AuthUserActions.uploadPhotoURL(
+            `profile-images/${uid}-${selectedImage.name}`,
+            selectedImage
+          ));
+        });
+      });
   }
 }

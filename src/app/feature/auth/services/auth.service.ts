@@ -26,9 +26,9 @@ export class AuthService {
       ));
   }
 
-  signup(email: string, password: string) {
-    return from(this.afAuth.createUserWithEmailAndPassword(email, password));
-  }
+  signup = (email: string, password: string) => from(this.afAuth.createUserWithEmailAndPassword(email, password));
 
-  logout() { this.afAuth.signOut(); }
+  logout = () => this.afAuth.signOut();
+
+  updatePhotoURL = (photoURL: string): Observable<void> => from(firebase.auth().currentUser.updateProfile({ photoURL }));
 }

@@ -17,3 +17,8 @@ export const signup = createAction(
 );
 
 export const logout = createAction('[Auth/User] Logout');
+
+export const uploadPhotoURL = createAction(
+    '[Auth/User] Upload Photo Url',
+    (path: string, file: File) => ({ path, file })
+);

@@ -6,6 +6,8 @@ import { AuthService } from '../../../../feature/auth/services/auth.service';
 import { AuthUserActions, AuthApiActions } from '../../../../feature/auth/actions';
 import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
+import { FirestorageService } from 'src/app/shared/firestorage/firestorage.service';
+import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 
 
 @Injectable()
@@ -61,9 +63,43 @@ export class AuthEffects {
         })
     ), { dispatch: false });
 
+    uploadPhotoURL = createEffect(() => this.actions$.pipe(
+        ofType(AuthUserActions.uploadPhotoURL),
+        mergeMap(actions => this.fireStorageService.upload(actions.path, actions.file)
+            .pipe(
+                map((uploadTaskSnapshot: UploadTaskSnapshot) => {
+                    return AuthApiActions.photoURLUploadSuccess(uploadTaskSnapshot.ref.fullPath);
+                }),
+                catchError(error => {
+                    this.snackbarService.triggerSnackBar(error.message);
+                    return of(AuthApiActions.photoURLUploadFailure(error));
+                })
+            )
+        )
+    ));
+
+    retrieveDowloadUrl = createEffect(() => this.actions$.pipe(
+        ofType(AuthApiActions.photoURLUploadSuccess),
+        mergeMap(actions => this.fireStorageService.retrieveDownloadURL(actions.storageRef)
+            .pipe(
+                map(downloadUrl => AuthApiActions.downloadURLRetrievalSuccess(downloadUrl)),
+                catchError(error => {
+                    this.snackbarService.triggerSnackBar(error.message);
+                    return of(AuthApiActions.downloadURLRetrievalFailure(error));
+                })
+            )
+        )
+    ));
+
+    updateProfilePhotoUrl = createEffect(() => this.actions$.pipe(
+        ofType(AuthApiActions.downloadURLRetrievalSuccess),
+        mergeMap(actions => this.authService.updatePhotoURL(actions.downloadURL))
+    ), { dispatch: false });
+
     constructor(
         private actions$: Actions,
         private authService: AuthService,
+        private fireStorageService: FirestorageService,
         private snackbarService: SnackbarService,
         private router: Router
     ) { }

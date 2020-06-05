@@ -15,5 +15,14 @@ export const authReducer = createReducer(
                 photoURL: actions.photoURL
             }
         }
+    ),
+    on(
+        AuthApiActions.downloadURLRetrievalSuccess,
+        (state, actions) => {
+            return {
+                ...state,
+                photoURL: actions.downloadURL
+            }
+        }
     )
 )
