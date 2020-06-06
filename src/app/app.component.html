@@ -1,21 +1,31 @@
-<mat-toolbar *ngIf="authUser$ | async">
-  <button (click)='sidenav.toggle()' mat-mini-fab>
+<mat-toolbar>
+  <button
+    *ngIf="authUser$ | async"
+    mat-mini-fab
+    (click)='sidenav.toggle()'>
     <mat-icon>menu</mat-icon>
+  </button>
+  <h1
+    id="title"
+    [ngStyle]="{'margin-left': (authUser$ | async) ? '20px' : '0px'}"
+    routerLink='home'>
+    Web Dev Utils
+  </h1>
+  <span style="flex: 1 1 auto;"></span>
+  <button
+    *ngIf="authUser$ | async"
+    mat-icon-button
+    matTooltip='Logout'
+    (click)='logout()'>
+    <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-sidenav-container id="mat-sidenav-container">
-  <mat-sidenav #sidenav mode='side' id="mat-sidenav">
+  <mat-sidenav #sidenav mode='side' [opened]='authUser$ | async'>
     <nav>
       <user-header></user-header>
       <mat-divider></mat-divider>
-      <a
-        mat-button
-        class="mat-route"
-        (click)='logout()'>
-        <mat-icon>logout</mat-icon>
-        Logout
-      </a>
       <a
         mat-button
         class="mat-route"
@@ -26,7 +36,7 @@
       </a>
     </nav>
   </mat-sidenav>
-  <div>
+  <div id="router-outlet-container">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

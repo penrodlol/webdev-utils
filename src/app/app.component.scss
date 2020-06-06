@@ -1,9 +1,12 @@
 @import 'variables';
 
+#title { cursor: pointer; }
+#title:focus { outline:none; }
+
 #mat-sidenav-container {
     height: 100%;
     padding-top: 20px;
-    #mat-sidenav {
+    .mat-sidenav {
         min-width: 150px;
         .mat-route {
             display: flex;
@@ -17,4 +20,5 @@
         margin-bottom: 10px;
         border: solid 0.8px #000;
     }
+    #router-outlet-container { padding: 10px 30px; }
 }

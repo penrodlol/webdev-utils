@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFileUploadModule } from 'mat-file-upload';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -25,7 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatSnackBarModule,
     MatFileUploadModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }
