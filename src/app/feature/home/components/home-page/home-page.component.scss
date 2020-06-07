@@ -1,0 +1,9 @@
+.home-container {
+    div:first-child, div:last-child { padding: 20px; }
+    div:last-child { background-color: rgb(224, 224, 224); }
+    &_slogan { font-size: 3.125rem; }
+    &_description {
+        font-size: 1.25rem;
+        line-height: 30px;
+    }
+}
