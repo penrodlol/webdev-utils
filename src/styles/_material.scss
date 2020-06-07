@@ -1,16 +1,32 @@
-#login, #signup  {
+@import 'variables';
+
+.mat-icon { color: $purple; }
+
+#login, #signup {
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
+    background-color: $tertiary-background;
 
     .mat-card-header {
         margin-bottom: 20px;
-        .mat-card-header-text { width: 100%;}
+        .mat-card-header-text {
+            width: 100%;
+            color: $primary-color;
+        }
     }
+
+    .mat-form-field-label { color: $primary-color !important; }
+
+    .mat-form-field-outline { color: $primary-color !important; }
 
     .mat-card-content .mat-form-field,
     .mat-card-actions button {
         width: 75%;
+    }
+
+    .login-btn:enabled, .send-email-verification-btn:enabled {
+        background-color: $purple !important;
     }
 
     .google-btn {
@@ -25,5 +41,6 @@
 
     .mat-card-footer button {
         width: 100%;
+        color: $primary-color;
     }
 }

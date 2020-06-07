@@ -1,9 +1,14 @@
+@import 'variables';
+
 .home-container {
     div:first-child, div:last-child { padding: 20px; }
-    div:last-child { background-color: rgb(224, 224, 224); }
-    &_slogan { font-size: 3.125rem; }
+    &_slogan {
+        font-size: 3.125rem;
+        color: $purple;
+    }
     &_description {
         font-size: 1.25rem;
         line-height: 30px;
     }
+    &_image { width: 100%; }
 }
