@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { MaterialModule } from '@external/material.module';
+
 import { DialogComponent } from './components/dialog/dialog.component';
-import { MaterialModule } from 'src/app/material.module';
 import { DialogService } from './services/dialog.service';
 import { DialogComponentInjectorDirective } from './directives/dialog-component-injector.directive';
-
-
 
 @NgModule({
   declarations: [

@@ -1,6 +1,8 @@
-import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
-import { createSelector } from '@ngrx/store';
+import { IAuthUserState } from '@shared/state/auth/auth-user.state';
+
 import { WebDevUtilsState } from '../..';
+
+import { createSelector } from '@ngrx/store';
 
 export const selectUser = (state: WebDevUtilsState): IAuthUserState => state.auth;
 

@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { WebDevUtilsRoutes } from './routes/routes';
-import { Store } from '@ngrx/store';
-import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
-import { AuthUserActions } from '@feature/auth/actions';
 import { AngularFireAuth } from '@angular/fire/auth';
+
+import { WebDevUtilsRoutes } from '@routes/routes';
+
+import { IAuthUserState } from '@shared/state/auth/auth-user.state';
+
+import { AuthUserActions } from '@feature/auth/actions';
+
+import { Store } from '@ngrx/store';
+
 import { takeWhile } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 

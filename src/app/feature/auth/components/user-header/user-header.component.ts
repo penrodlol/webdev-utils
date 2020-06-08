@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AuthSelectors } from 'src/app/shared/state/auth/selectors';
-import { WebDevUtilsState } from 'src/app/shared/state';
-import { DialogService } from 'src/app/shared/dialog/services/dialog.service';
-import { ProfileImageUploadComponent } from '../profile-image-upload/profile-image-upload.component';
+
+import { ProfileImageUploadComponent } from '@feature/auth/components/profile-image-upload/profile-image-upload.component';
 import { AuthUserActions } from '@feature/auth/actions';
+
+import { AuthSelectors } from '@shared/state/auth/selectors';
+import { WebDevUtilsState } from '@shared/state/index';
+import { DialogService } from '@shared/dialog/services/dialog.service';
+
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({

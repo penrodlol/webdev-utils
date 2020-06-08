@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
-import { Store } from '@ngrx/store';
+
+import { IAuthUserState } from '@shared/state/auth/auth-user.state';
+
 import { AuthUserActions } from '@feature/auth/actions';
+
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'signup-form',

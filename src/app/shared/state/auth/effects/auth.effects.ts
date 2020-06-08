@@ -1,14 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { map, catchError, tap, switchMap, mergeMap } from 'rxjs/operators';
-import { AuthService } from '../../../../feature/auth/services/auth.service';
-import { AuthUserActions, AuthApiActions } from '../../../../feature/auth/actions';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
-import { FirestorageService } from 'src/app/shared/firestorage/firestorage.service';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 
+import { AuthService } from '@feature/auth/services/auth.service';
+import { AuthUserActions, AuthApiActions } from '@feature/auth/actions';
+
+import { FirestorageService } from '@shared/firestorage/firestorage.service';
+import { SnackbarService } from '@shared/snackbar/snackbar.service';
+
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import { of } from 'rxjs';
+import {
+    map,
+    catchError,
+    tap,
+    switchMap,
+    mergeMap
+} from 'rxjs/operators';
 
 @Injectable()
 export class AuthEffects {

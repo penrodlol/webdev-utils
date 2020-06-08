@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { Routes, RouterModule } from '@angular/router';
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
-import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+import { MaterialModule } from '@external/material.module';
+
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { PasswordMatchValidatorDirective } from './components/signup-form/directives/password-match-validator.directive';
 import { ProfileImageUploadComponent } from './components/profile-image-upload/profile-image-upload.component';
 

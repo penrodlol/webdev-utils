@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/shared/dialog/components/dialog/dialog.component';
+
+import { DialogComponent } from '@shared/dialog/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-profile-image-upload',

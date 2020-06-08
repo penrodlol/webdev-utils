@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MaterialModule } from '@external/material.module';
 
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { MaterialModule } from 'src/app/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent }

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+
 import { Observable, from, throwError, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 

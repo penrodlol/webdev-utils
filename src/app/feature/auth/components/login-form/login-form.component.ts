@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
-import { AuthUserActions } from '@feature/auth/actions';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+
+import { IAuthUserState } from '@shared/state/auth/auth-user.state';
+
+import { AuthUserActions } from '@feature/auth/actions';
+
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'login-form',

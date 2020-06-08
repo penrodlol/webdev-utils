@@ -1,4 +1,14 @@
-import { Directive, Input, Component, ComponentFactory, ComponentFactoryResolver, ViewContainerRef, OnInit, Type, OnDestroy } from '@angular/core';
+import {
+  Directive,
+  Input,
+  Component,
+  ComponentFactory,
+  ComponentFactoryResolver,
+  ViewContainerRef,
+  OnInit,
+  Type,
+  OnDestroy
+} from '@angular/core';
 
 @Directive({
   selector: '[appDialogComponentInjector]'

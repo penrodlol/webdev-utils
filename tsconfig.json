@@ -3,9 +3,16 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@external/*": ["src/app/external/*"],
+      "@routes/*": ["src/app/routes/*"],
       "@feature/auth/*": ["src/app/feature/auth/*"],
       "@feature/home/*": ["src/app/feature/home/*"],
-      "@feature/cookie/*": ["src/app/feature/cookie/*"]
+      "@feature/cookie/*": ["src/app/feature/cookie/*"],
+      "@shared/state/*": ["src/app/shared/state/*"],
+      "@shared/metareducers/*": ["src/app/shared/metareducers/*"],
+      "@shared/dialog/*": ["src/app/shared/dialog/*"],
+      "@shared/snackbar/*": ["src/app/shared/snackbar/*"],
+      "@shared/firestorage/*": ["src/app/shared/firestorage/*"],
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
