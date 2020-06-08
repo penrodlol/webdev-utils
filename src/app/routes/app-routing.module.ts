@@ -15,6 +15,12 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToAuth },
     loadChildren: () => import('@feature/home/home.module').then(m => m.HomeModule),
+  }, 
+  {
+    path: 'cookie',
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToAuth },
+    loadChildren: () => import('@feature/cookie/cookie.module').then(m => m.CookieModule),
   },
 ];
 

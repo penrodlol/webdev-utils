@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WebDevUtilsRoutes } from './routes';
+import { WebDevUtilsRoutes } from './routes/routes';
 import { Store } from '@ngrx/store';
 import { IAuthUserState } from 'src/app/shared/state/auth/auth-user.state';
 import { AuthUserActions } from '@feature/auth/actions';

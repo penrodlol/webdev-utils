@@ -4,7 +4,8 @@
     "baseUrl": "./",
     "paths": {
       "@feature/auth/*": ["src/app/feature/auth/*"],
-      "@feature/home/*": ["src/app/feature/home/*"]
+      "@feature/home/*": ["src/app/feature/home/*"],
+      "@feature/cookie/*": ["src/app/feature/cookie/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
