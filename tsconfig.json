@@ -7,7 +7,7 @@
       "@routes/*": ["src/app/routes/*"],
       "@feature/auth/*": ["src/app/feature/auth/*"],
       "@feature/home/*": ["src/app/feature/home/*"],
-      "@feature/cookie/*": ["src/app/feature/cookie/*"],
+      "@feature/links/*": ["src/app/feature/links/*"],
       "@shared/state/*": ["src/app/shared/state/*"],
       "@shared/metareducers/*": ["src/app/shared/metareducers/*"],
       "@shared/dialog/*": ["src/app/shared/dialog/*"],
