@@ -1,0 +1,33 @@
+@import 'variables';
+
+.links-list {
+    height: 100%;
+    background-color: $secondary-background;
+
+    .mat-toolbar {
+        background-color: $tertiary-background;
+        color: $primary-color;
+        border-bottom: solid 1px #000;
+    }
+
+    .mat-selection-list {
+        height: 75vh;
+        overflow: auto;
+    }
+
+    .mat-list-item {
+        height: 53px;
+    }
+
+    &_subheader {
+        color: $purple;
+    }
+    
+    &_item {
+        color: $primary-color;
+        &_url {
+            color: $secondary-color;
+            font-size: 12px !important;
+        }
+    }
+}

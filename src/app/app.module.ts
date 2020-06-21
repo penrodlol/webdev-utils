@@ -10,7 +10,7 @@ import { AppRoutingModule } from '@routes/app-routing.module';
 
 import { MaterialModule } from '@external/material.module';
 
-import { UserHeaderModule } from '@feature/auth/components/user-header/user-header.module';
+import { UserHeaderModule } from '@auth/components/user-header/user-header.module';
 
 import { AuthEffects } from '@shared/state/auth/effects/auth.effects';
 import { reducers } from '@shared/state/index';

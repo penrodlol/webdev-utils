@@ -8,19 +8,19 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
   {
     path: 'auth',
-    loadChildren: () => import('@feature/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'home',
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToAuth },
-    loadChildren: () => import('@feature/home/home.module').then(m => m.HomeModule),
+    loadChildren: () => import('@home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'links',
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToAuth },
-    loadChildren: () => import('@feature/links/links.module').then(m => m.LinksModule),
+    loadChildren: () => import('@links/links.module').then(m => m.LinksModule),
   }
 ];
 

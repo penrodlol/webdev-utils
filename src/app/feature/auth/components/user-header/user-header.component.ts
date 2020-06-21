@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProfileImageUploadComponent } from '@feature/auth/components/profile-image-upload/profile-image-upload.component';
-import { AuthUserActions } from '@feature/auth/actions';
+import { ProfileImageUploadComponent } from '@auth/components/profile-image-upload/profile-image-upload.component';
+import { AuthUserActions } from '@auth/actions';
 
 import { AuthSelectors } from '@shared/state/auth/selectors';
 import { WebDevUtilsState } from '@shared/state/index';

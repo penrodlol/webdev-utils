@@ -1,1 +1,13 @@
-<p>link-view works!</p>
+<div class="link-view">
+    <ng-container *ngIf="selectedLink$ | async as selectedLink">
+        <mat-toolbar>
+            <div class="link-view-toolbar">
+                <span class="link-view-toolbar_name">{{selectedLink.name}}</span>
+                <span class="link-view-toolbar_url">{{selectedLink.url}}</span>
+            </div>
+        </mat-toolbar>
+        <section class="link-view_iframe">
+            <iframe [src]="selectedLink.url | safeUrl"></iframe>
+        </section>
+    </ng-container>
+</div>

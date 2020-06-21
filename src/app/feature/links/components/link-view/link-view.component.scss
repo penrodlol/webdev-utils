@@ -1,0 +1,38 @@
+@import 'variables';
+
+.link-view {
+    height: 100%;
+
+    .mat-toolbar {
+        background-color: $tertiary-background;
+        color: $primary-color;
+        border-bottom: solid 1px #000;
+        height: auto;
+    }
+
+    &_iframe {
+        height: 75vh;
+        background-color: $secondary-background;
+        padding: 10px;
+
+        iframe {
+            border: none;
+            height: inherit;
+            width: 100%;
+        }
+    }
+}
+
+.link-view-toolbar {
+    padding: 10px 0;
+
+    &_name {
+        color: $purple;
+        font-size: 30px;
+        display: block;
+    }
+
+    &_url {
+        font-size: 15px;
+    }
+}

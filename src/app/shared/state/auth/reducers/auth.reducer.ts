@@ -1,6 +1,6 @@
 import { initialAuthUserState } from '@shared/state/auth/auth-user.state';
 
-import { AuthApiActions, AuthUserActions } from '@feature/auth/actions';
+import { AuthApiActions, AuthUserActions } from '@auth/actions';
 
 import { createReducer, on } from '@ngrx/store';
 

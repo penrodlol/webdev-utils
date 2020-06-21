@@ -1,1 +1,16 @@
-<p>links-list works!</p>
+<div class="links-list">
+    <mat-toolbar>
+        <b>Links</b>
+    </mat-toolbar>
+    <mat-selection-list [multiple]='false'>
+        <div>
+            <div *ngFor="let link of links$ | async">
+                <div mat-subheader class="links-list_subheader">{{link.parent}}</div>
+                <mat-list-option *ngFor="let child of link.children" (click)='selectLink(child)'>
+                    <div mat-line class="links-list_item">{{child.name}}</div>
+                    <span mat-line class="links-list_item links-list_item_url">{{child.url}}</span>
+                </mat-list-option>
+            </div>
+        </div>
+    </mat-selection-list>
+</div>

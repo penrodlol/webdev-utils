@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IAuthUserState } from '@shared/state/auth/auth-user.state';
 
-import { AuthUserActions } from '@feature/auth/actions';
+import { AuthUserActions } from '@auth/actions';
 
 import { Store } from '@ngrx/store';
 

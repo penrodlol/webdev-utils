@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Observable } from 'rxjs';
+import { DialogComponent } from '@shared/dialog/components/dialog/dialog.component';
+import { DialogData } from '@shared/dialog/models/dialog.model';
 
-import { DialogComponent } from '../components/dialog/dialog.component';
-import { DialogData } from '../models/dialog.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

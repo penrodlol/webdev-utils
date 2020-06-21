@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 
-import { AuthService } from '@feature/auth/services/auth.service';
-import { AuthUserActions, AuthApiActions } from '@feature/auth/actions';
+import { AuthService } from '@auth/services/auth.service';
+import { AuthUserActions, AuthApiActions } from '@auth/actions';
 
 import { FirestorageService } from '@shared/firestorage/firestorage.service';
 import { SnackbarService } from '@shared/snackbar/snackbar.service';
