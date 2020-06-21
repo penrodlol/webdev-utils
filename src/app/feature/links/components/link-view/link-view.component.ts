@@ -17,7 +17,6 @@ export class LinkViewComponent implements OnInit {
     private linksService: LinksService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

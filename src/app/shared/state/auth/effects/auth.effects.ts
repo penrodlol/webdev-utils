@@ -7,6 +7,7 @@ import { AuthUserActions, AuthApiActions } from '@auth/actions';
 
 import { FirestorageService } from '@shared/firestorage/firestorage.service';
 import { SnackbarService } from '@shared/snackbar/snackbar.service';
+import { SessionStorageRemovalService } from '@shared/session-storage-removal/session-storage-removal.service';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
@@ -32,6 +33,7 @@ export class AuthEffects {
                 map(auth => {
                     this.router.navigate(['home']);
                     this.snackbarService.triggerSnackBar(`Welcome ${auth.user.displayName || auth.user.email}!`);
+                    sessionStorage.setItem('uid', auth.user.uid);
                     return AuthApiActions.loginSuccess(
                         auth.user.uid,
                         auth.user?.displayName,
@@ -73,6 +75,7 @@ export class AuthEffects {
         ofType(AuthUserActions.logout),
         tap(() => {
             this.authService.logout();
+            this.sessionStorageRemovalService.removeStoreValues();
             this.router.navigate(['auth']);
         })
     ), { dispatch: false });
@@ -115,6 +118,7 @@ export class AuthEffects {
         private authService: AuthService,
         private fireStorageService: FirestorageService,
         private snackbarService: SnackbarService,
+        private sessionStorageRemovalService: SessionStorageRemovalService,
         private router: Router
     ) { }
 }
