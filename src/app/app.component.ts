@@ -9,7 +9,7 @@ import { AuthUserActions } from '@auth/actions';
 
 import { Store } from '@ngrx/store';
 
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, filter, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -28,12 +28,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.authUser$
-      .pipe(takeWhile(user => user != null))
+      .pipe(
+        filter(user => user != null),
+        take(1)
+      )
       .subscribe(user => {
         this.store.dispatch(AuthUserActions.returningLogin(
-          user.uid,
-          user.displayName,
           user.email,
+          user.displayName,
           user.photoURL
         ));
       });

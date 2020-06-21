@@ -35,9 +35,8 @@ export class AuthEffects {
                     this.snackbarService.triggerSnackBar(`Welcome ${auth.user.displayName || auth.user.email}!`);
                     sessionStorage.setItem('uid', auth.user.uid);
                     return AuthApiActions.loginSuccess(
-                        auth.user.uid,
-                        auth.user?.displayName,
                         auth.user.email,
+                        auth.user?.displayName,
                         auth.user?.photoURL
                     );
                 }),

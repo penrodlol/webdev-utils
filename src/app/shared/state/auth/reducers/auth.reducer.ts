@@ -11,7 +11,6 @@ export const authReducer = createReducer(
         AuthUserActions.returningLogin,
         (_state, actions) => {
             return {
-                uid: actions.uid,
                 displayName: actions.displayName,
                 email: actions.email,
                 photoURL: actions.photoURL

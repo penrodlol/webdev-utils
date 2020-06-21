@@ -7,8 +7,8 @@ export const login = createAction(
 
 export const returningLogin = createAction(
     '[Auth/User] Returning Login',
-    (uid: string, displayName: string, email: string, photoURL: string) =>
-        ({ uid, displayName, email, photoURL })
+    (email: string, displayName: string, photoURL: string) =>
+        ({ email, displayName, photoURL })
 );
 
 export const signup = createAction(

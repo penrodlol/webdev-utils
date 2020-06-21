@@ -36,12 +36,10 @@ export class UserHeaderComponent implements OnInit {
     })
       .pipe(takeWhile((selectedImage: File | null) => selectedImage != null))
       .subscribe((selectedImage: File) => {
-        this.store.select(AuthSelectors.selectUID).subscribe(uid => {
-          this.store.dispatch(AuthUserActions.uploadPhotoURL(
-            `profile-images/${uid}-${selectedImage.name}`,
-            selectedImage
-          ));
-        });
+        this.store.dispatch(AuthUserActions.uploadPhotoURL(
+          `profile-images/${sessionStorage.getItem('uid')}-${selectedImage.name}`,
+          selectedImage
+        ));
       });
   }
 }
