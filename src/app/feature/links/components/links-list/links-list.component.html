@@ -1,6 +1,12 @@
 <div class="links-list">
     <mat-toolbar>
         <b>Links</b>
+        <span style="flex: 1 1 auto;"></span>
+        <mat-icon
+            class="links-list_settings"
+            (click)='showSettings()'>
+            settings
+        </mat-icon>
     </mat-toolbar>
     <mat-selection-list [multiple]='false'>
         <div>

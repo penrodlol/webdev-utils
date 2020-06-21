@@ -1,5 +1,5 @@
 <div class="link-view">
-    <ng-container *ngIf="selectedLink$ | async as selectedLink">
+    <ng-container *ngIf="selectedLink$ | async as selectedLink; else noSelectedLink">
         <mat-toolbar>
             <div class="link-view-toolbar">
                 <span class="link-view-toolbar_name">{{selectedLink.name}}</span>
@@ -10,4 +10,18 @@
             <iframe [src]="selectedLink.url | safeUrl"></iframe>
         </section>
     </ng-container>
+    <ng-template #noSelectedLink>
+        <div class="no-link-view">
+            <div>
+                <h3 class="no-link-view_title">No Link Selected</h3>
+                <p>If no links exist, please add one:</p>
+                <button
+                    mat-raised-button
+                    class="no-link-view_add">
+                    <mat-icon>add</mat-icon>
+                    Add Link
+                </button>
+            </div>
+        </div>
+    </ng-template>
 </div>

@@ -36,3 +36,25 @@
         font-size: 15px;
     }
 }
+
+.no-link-view {
+    background-color: $secondary-background;
+    height: inherit;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px $tertiary-background;
+    
+    &_title {
+        margin-top: 0;
+        display: block;
+    }
+
+    &_add {
+        background-color: $purple;
+        font-weight: bold;
+    
+        .mat-icon { color: #000; }
+    }
+}

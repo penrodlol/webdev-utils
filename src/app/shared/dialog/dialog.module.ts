@@ -17,7 +17,8 @@ import { DialogComponentInjectorDirective } from './directives/dialog-component-
     MaterialModule
   ],
   exports: [
-    DialogComponent
+    DialogComponent,
+    DialogComponentInjectorDirective
   ],
   providers: [DialogService]
 })

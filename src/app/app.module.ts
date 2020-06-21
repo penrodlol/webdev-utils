@@ -20,7 +20,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-
 import { environment } from 'src/environments/environment';
 
 import { AppComponent } from './app.component';

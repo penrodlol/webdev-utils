@@ -16,6 +16,7 @@ export class DialogService {
   openDialog(data: DialogData): Observable<any> {
     return this.dialog.open(DialogComponent, {
       width: '600px',
+      height: 'auto',
       position: { top: '50px' },
       data
     }).afterClosed();
