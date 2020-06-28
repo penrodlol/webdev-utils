@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>{{data.title}}</h1>
+<h1
+    mat-dialog-title
+    [ngClass]="data.type">
+    <mat-icon></mat-icon>
+    {{data.title}}
+</h1>
 <div mat-dialog-content>
     <ng-template
         *ngIf='data.component'

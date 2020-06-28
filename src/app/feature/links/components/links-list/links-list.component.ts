@@ -29,6 +29,7 @@ export class LinksListComponent implements OnInit {
   showSettings() {
     this.dialogService.openDialog({
       title: 'Links Configuration',
+      type: 'general',
       component: LinksConfigurationComponent
     });
   }

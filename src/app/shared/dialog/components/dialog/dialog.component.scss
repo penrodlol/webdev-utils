@@ -1,0 +1,59 @@
+@import 'variables';
+
+@mixin showIcon($type) {
+    @if $type == 'general' {
+        background-color: $tertiary-background;
+        .mat-icon { display: none; }
+    }
+    @else if $type == 'confirmation' {
+        background-color: $tertiary-background;
+        .mat-icon:before { content: '\E887'; }
+    }
+    @else if $type == 'warning' {
+        background-color: #ffb005;
+        color: #000;
+        .mat-icon:before {
+            content: '\E002';
+            color: #000;
+        }
+    }
+    @else if $type == 'error' {
+        background-color: #ca1717;
+        .mat-icon:before {
+            content: '\E000';
+            color: $primary-color;
+        }
+    }
+}
+
+.general { @include showIcon('general'); }
+.confirmation { @include showIcon('confirmation'); }
+.warning { @include showIcon('warning'); }
+.error { @include showIcon('error'); }
+
+::ng-deep {
+    .mat-dialog-container {
+        padding: 0;
+        overflow-x: hidden;
+        background: none;
+    }
+
+    .mat-dialog-title {
+        padding: 10px;
+        margin-bottom: 0;
+        font-weight: bold;
+        color: $primary-color;
+        border-bottom: solid 1px #000;
+
+        .mat-icon {
+            vertical-align: middle;
+            transform: translateY(-2px);
+        }
+    }
+
+    .mat-dialog-content {
+        padding: 10px 40px;
+        background-color: $secondary-background;
+        color: $primary-color;
+    }
+}

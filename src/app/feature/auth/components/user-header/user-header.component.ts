@@ -32,6 +32,7 @@ export class UserHeaderComponent implements OnInit {
   uploadProfileImage() {
     this.dialogService.openDialog({
       title: 'Add Profile Image',
+      type: 'general',
       component: ProfileImageUploadComponent
     })
       .pipe(takeWhile((selectedImage: File | null) => selectedImage != null))
