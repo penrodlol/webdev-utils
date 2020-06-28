@@ -1,0 +1,32 @@
+@import 'variables';
+
+#login {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: $tertiary-background;
+
+    .mat-card-content .mat-form-field,
+    .mat-card-actions button {
+        width: 75%;
+    }
+
+    .login-btn:enabled {
+        background-color: $purple !important;
+    }
+
+    .google-btn {
+        width: 50% !important;
+        margin-top: 20px;
+        padding: .3rem;
+        .mat-icon {
+            width: 40px;
+            height:30px;
+        }
+    }
+
+    .mat-card-footer button {
+        width: 100%;
+        color: $primary-color;
+    }
+}
