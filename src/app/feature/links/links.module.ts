@@ -13,6 +13,7 @@ import { LinksListComponent } from './components/links-list/links-list.component
 import { LinkViewComponent } from './components/link-view/link-view.component';
 import { LinksService } from './services/links.service';
 import { LinksConfigurationComponent } from './components/links-configuration/links-configuration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: LinksPageComponent } 
@@ -31,6 +32,7 @@ const routes: Routes = [
     FlexLayoutModule,
     PipesModule,
     DialogModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [LinksService]

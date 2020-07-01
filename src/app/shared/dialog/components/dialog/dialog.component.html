@@ -1,8 +1,9 @@
 <h1
     mat-dialog-title
     [ngClass]="data.type">
-    <mat-icon></mat-icon>
+    <mat-icon class="mat-icon_type"></mat-icon>
     {{data.title}}
+    <mat-icon class="mat-icon_close" (click)='dismiss()'>close</mat-icon>
 </h1>
 <div mat-dialog-content>
     <ng-template
@@ -10,4 +11,21 @@
         appDialogComponentInjector
         [dialogComponentInjection]='data.component'>
     </ng-template>
+</div>
+<div
+    *ngIf="data.button1"
+    mat-dialog-actions>
+    <button
+        mat-raised-button
+        class="mat-dialog-actions_button1"
+        (click)='dismiss()'>
+        {{data.button1}}
+    </button>
+    <button
+        *ngIf="data.button2"
+        mat-raised-button
+        class="mat-dialog-actions_button2"
+        [mat-dialog-close]="data.sharedData ? data.sharedData : true">
+        {{data.button2}}
+    </button>
 </div>

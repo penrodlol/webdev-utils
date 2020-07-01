@@ -4,15 +4,15 @@
     height: 100%;
 
     .mat-toolbar {
-        background-color: $tertiary-background;
-        color: $primary-color;
+        background-color: $charlie-background;
+        color: $alpha-color;
         border-bottom: solid 1px #000;
         height: auto;
     }
 
     &_iframe {
         height: 75vh;
-        background-color: $secondary-background;
+        background-color: $beta-background;
         padding: 10px;
 
         iframe {
@@ -38,13 +38,13 @@
 }
 
 .no-link-view {
-    background-color: $secondary-background;
+    background-color: $beta-background;
     height: inherit;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 1px $tertiary-background;
+    border: solid 1px $charlie-background;
     
     &_title {
         margin-top: 0;

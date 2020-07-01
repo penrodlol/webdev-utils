@@ -4,5 +4,6 @@ export interface DialogData {
     message?: string,
     component?: any,
     button1?: string,
-    button2?: string
+    button2?: string,
+    sharedData?: any;
 };

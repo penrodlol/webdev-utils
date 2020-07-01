@@ -4,7 +4,7 @@
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
-    background-color: $tertiary-background;
+    background-color: $charlie-background;
 
     .mat-card-content .mat-form-field,
     .mat-card-actions button {
@@ -27,6 +27,6 @@
 
     .mat-card-footer button {
         width: 100%;
-        color: $primary-color;
+        color: $alpha-color;
     }
 }

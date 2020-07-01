@@ -11,6 +11,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFileUploadModule } from 'mat-file-upload';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   exports: [
@@ -25,7 +27,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     MatFileUploadModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSlideToggleModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

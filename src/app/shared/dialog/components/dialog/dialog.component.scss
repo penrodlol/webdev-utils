@@ -1,59 +1,98 @@
 @import 'variables';
 
-@mixin showIcon($type) {
+@mixin handleType($type) {
     @if $type == 'general' {
-        background-color: $tertiary-background;
-        .mat-icon { display: none; }
+        background-color: $charlie-background;
+        .mat-icon {
+            &_type { display: none; }
+            &_close { color: $purple; }
+        }
     }
     @else if $type == 'confirmation' {
-        background-color: $tertiary-background;
-        .mat-icon:before { content: '\E887'; }
+        background-color: $charlie-background;
+        .mat-icon {
+            &_type:before { content: '\E887'; }
+            &_close { color: $purple; }
+        }
     }
     @else if $type == 'warning' {
         background-color: #ffb005;
         color: #000;
-        .mat-icon:before {
-            content: '\E002';
-            color: #000;
+        .mat-icon {
+            &_type:before {
+                content: '\E002';
+                color: #000;
+            }
+            &_close { color: #000; }
         }
     }
     @else if $type == 'error' {
         background-color: #ca1717;
-        .mat-icon:before {
-            content: '\E000';
-            color: $primary-color;
+        .mat-icon {
+            &_type:before {
+                content: '\E000';
+                color: $alpha-color;
+            }
+            &_close { color: $alpha-color; }
         }
     }
 }
 
-.general { @include showIcon('general'); }
-.confirmation { @include showIcon('confirmation'); }
-.warning { @include showIcon('warning'); }
-.error { @include showIcon('error'); }
+.general { @include handleType('general'); }
+.confirmation { @include handleType('confirmation'); }
+.warning { @include handleType('warning'); }
+.error { @include handleType('error'); }
 
 ::ng-deep {
     .mat-dialog-container {
         padding: 0;
         overflow-x: hidden;
         background: none;
+        max-height: 50vh;
     }
 
     .mat-dialog-title {
         padding: 10px;
         margin-bottom: 0;
         font-weight: bold;
-        color: $primary-color;
+        color: $alpha-color;
         border-bottom: solid 1px #000;
 
         .mat-icon {
-            vertical-align: middle;
-            transform: translateY(-2px);
+            &_close {
+                float: right;
+                transform: translateY(4px);
+                cursor: pointer;
+            }
+
+            &_type {
+                vertical-align: middle;
+                transform: translateY(-2px);
+            }
         }
     }
 
     .mat-dialog-content {
-        padding: 10px 40px;
-        background-color: $secondary-background;
-        color: $primary-color;
+        padding: 20px 50px;
+        background-color: $beta-background;
+        color: $alpha-color;
+    }
+
+    .mat-dialog-actions {
+        padding: 0 10px;
+        justify-content: flex-end;
+        background-color: $charlie-background;
+        border-top: solid 1px #000;
+        margin-bottom: 0;
+
+        &_button1 {
+            background-color: $delta-background;
+            font-weight: bold;
+        }
+
+        &_button2 {
+            background-color: $purple;
+            font-weight: bold;
+        }
     }
 }

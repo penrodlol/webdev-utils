@@ -9,14 +9,23 @@
         </mat-icon>
     </mat-toolbar>
     <mat-selection-list [multiple]='false'>
-        <div>
-            <div *ngFor="let link of links$ | async">
-                <div mat-subheader class="links-list_subheader">{{link.parent}}</div>
-                <mat-list-option *ngFor="let child of link.children" (click)='selectLink(child)'>
-                    <div mat-line class="links-list_item">{{child.name}}</div>
-                    <span mat-line class="links-list_item links-list_item_url">{{child.url}}</span>
-                </mat-list-option>
+        <ng-container *ngIf="links$ | async as links">
+            <div *ngFor="let link of links.nodes; let last = last">
+                <ng-container *ngIf="!link.hidden">
+                    <div
+                        mat-subheader
+                        class="links-list_subheader">
+                        {{link.parent}}
+                    </div>
+                    <mat-list-option
+                        *ngFor="let child of link.children"
+                        (click)='selectLink(child, links.newTab)'>
+                        <div mat-line class="links-list_item">{{child.name}}</div>
+                        <span mat-line class="links-list_item links-list_item_url">{{child.url}}</span>
+                    </mat-list-option>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
             </div>
-        </div>
+        </ng-container>
     </mat-selection-list>
 </div>

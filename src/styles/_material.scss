@@ -11,12 +11,25 @@
     margin-bottom: 20px;
     &-text {
         width: 100%;
-        color: $primary-color;
+        color: $alpha-color;
     }
 }
 
 .mat-form-field {
-    color: $primary-color;
-    &-label { color: $primary-color !important; }
-    &-outline { color: $primary-color !important; }
+    color: $alpha-color;
+    &-label { color: $alpha-color !important; }
+    &-outline { color: $alpha-color !important; }
 }
+
+.mat-checkbox {
+    &-indeterminate.mat-accent &-background,
+    &-checked.mat-accent &-background {
+        background-color: $purple;
+    }
+
+    &-checked, &:active {
+        &:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element { background: $purple; }
+    }
+}
+
+.dialog-backdrop { background-color: #0000008e; }

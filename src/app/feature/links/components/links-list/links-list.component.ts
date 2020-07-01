@@ -4,6 +4,7 @@ import { LinksService } from '@links/services/links.service';
 import { ILink } from '@links/models/link.interface';
 import { ILinkListNode } from '@links/models/link-list-node.interface';
 import { LinksConfigurationComponent } from '@links/components/links-configuration/links-configuration.component';
+import { ILinksMeta } from '@links/models/links-meta.interface';
 
 import { DialogService } from '@shared/dialog/services/dialog.service';
 
@@ -19,18 +20,23 @@ export class LinksListComponent implements OnInit {
 
   constructor(
     private linksService: LinksService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
   ) { }
 
   ngOnInit(): void { }
 
-  selectLink = (link: ILink) => this.linksService.selectLink(link);
+  selectLink = (link: ILink, newTab: boolean) => !newTab ? this.linksService.selectLink(link) : window.open(link.url);
 
   showSettings() {
     this.dialogService.openDialog({
       title: 'Links Configuration',
       type: 'general',
-      component: LinksConfigurationComponent
+      component: LinksConfigurationComponent,
+      button1: 'Cancel',
+      button2: 'Save',
+      sharedData: this.linksService.metaData()
+    }).subscribe((metaData: ILinksMeta) => {
+      // UPDATE LINKS - DOCID META DATA
     });
   }
 

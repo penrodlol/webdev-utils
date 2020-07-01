@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DialogComponent } from '@shared/dialog/components/dialog/dialog.component';
 import { DialogData } from '@shared/dialog/models/dialog.model';
+import { takeOne } from '@shared/operators';
 
 import { Observable } from 'rxjs';
 
@@ -15,10 +16,13 @@ export class DialogService {
 
   openDialog(data: DialogData): Observable<any> {
     return this.dialog.open(DialogComponent, {
-      width: '600px',
+      width: 'auto',
+      maxWidth: '50vw',
       height: 'auto',
+      maxHeight: '50vh',
+      backdropClass: 'dialog-backdrop',
       position: { top: '50px' },
       data
-    }).afterClosed();
+    }).afterClosed().pipe(takeOne());
   }
 }

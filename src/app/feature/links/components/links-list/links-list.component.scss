@@ -2,36 +2,32 @@
 
 .links-list {
     height: 100%;
-    background-color: $secondary-background;
+    background-color: $beta-background;
 
     .mat-toolbar {
-        background-color: $tertiary-background;
-        color: $primary-color;
+        background-color: $charlie-background;
+        color: $alpha-color;
         border-bottom: solid 1px #000;
     }
 
-    &_settings:hover {
-        cursor: pointer;
-    }
+    &_settings:hover { cursor: pointer; }
 
     .mat-selection-list {
         height: 75vh;
         overflow: auto;
     }
 
-    .mat-list-item {
-        height: 53px;
-    }
+    .mat-list-item { height: 53px; }
 
-    &_subheader {
-        color: $purple;
-    }
+    &_subheader { color: $purple; }
     
     &_item {
-        color: $primary-color;
+        color: $alpha-color;
         &_url {
-            color: $secondary-color;
+            color: $beta-color;
             font-size: 12px !important;
         }
     }
+
+    .mat-divider { margin: 10px 0; }
 }
