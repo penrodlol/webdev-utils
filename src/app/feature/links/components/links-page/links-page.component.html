@@ -13,33 +13,18 @@
             *ngIf="visible.clientSide"
             fxFlex='1 2 calc(15em + 20px)'
             class="links-page_column mat-elevation-z8">
-            <span
-                fxLayout='row'
-                class="links-page_column-header">
-                Client
-            </span>
             <client-side-links></client-side-links>
         </div>
         <div
             *ngIf="visible.serverSide"
             fxFlex='1 2 calc(15em + 20px)'
             class="links-page_column mat-elevation-z8">
-            <span
-                fxLayout='row'
-                class="links-page_column-header">
-                Server
-            </span>
             <server-side-links></server-side-links>
         </div>
         <div
             *ngIf="visible.misc"
             fxFlex='1 2 calc(15em + 20px)'
             class="links-page_column mat-elevation-z8">
-            <span
-                fxLayout='row'
-                class="links-page_column-header">
-                Misc
-            </span>
             <misc-links></misc-links>
         </div>
     </div>

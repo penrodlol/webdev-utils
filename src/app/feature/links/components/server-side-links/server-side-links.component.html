@@ -1,3 +1,12 @@
+<mat-toolbar
+    fxLayout='row'
+    class="links-page_column-header">
+    Server
+    <span fxFlex></span>
+    <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
 <table
     mat-table
     [dataSource]="serverSide$ | async">

@@ -5,9 +5,12 @@
         height: 80vh;
         background-color: $beta-background;
 
-        &-header {
+        ::ng-deep &-header {
             color: $purple;
             padding: 10px;
+            height: 40px;
+            background-color: transparent;
+            font-size: $small-font;
         }
     }
 
