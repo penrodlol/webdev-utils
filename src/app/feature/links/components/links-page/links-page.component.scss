@@ -1,3 +1,39 @@
-::ng-deep {
-    table { width: 100%; }
+@import 'variables';
+
+.links-page {
+    ::ng-deep {
+        .mat-table {
+            width: 100%;
+            background: none;
+        }
+
+        .mat-row {
+            cursor: pointer;
+
+            &:hover {
+                background: $charlie-background;
+                box-shadow: $z8-elevation;
+
+                .mat-cell { color: $purple; }
+            }
+        }
+
+        .mat-column {
+            &-name {
+                color: $alpha-color;
+                padding-right: 15px;
+            }
+
+            &-url {
+                color: $beta-color;
+                font-size: $smallest-font;
+            }            
+        }
+
+    }
+
+    &_column {
+        height: 85vh;
+        background-color: $beta-background;
+    }
 }

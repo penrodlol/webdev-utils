@@ -1,9 +1,11 @@
 // FONTS ====================
+$smallest-font: 12px;
 $extra-small-font: 14px;
 $small-font: 16px;
 $medium-font: 18px;
 $large-font: 20px;
 $extra-large-font: 22px;
+$largest-font: 24px;
 // ===========================
 
 // COLORS ====================
@@ -14,4 +16,8 @@ $delta-background: #646464;
 $alpha-color: #f2f2f2;
 $beta-color: #888;
 $purple: #bd93f9;
+// ===========================
+
+// MISC ======================
+$z8-elevation: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 // ===========================

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LinksService } from '@links/services/links.service';
-import { Observable } from 'rxjs';
 import { ILink } from '@links/models/link.interface';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'server-side-links',
