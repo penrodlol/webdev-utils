@@ -1,5 +1,5 @@
 export enum LinksMeta {
-    
+    VISIBLE = 'visible'
 }
 
 export enum Links {

@@ -14,7 +14,6 @@ export class LinksPageComponent implements OnInit {
     private linksService: LinksService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,4 +1,4 @@
-<div class="hide-links" *ngIf="visible$ | async">
+<div class="hide-links">
     <form [formGroup]='visibleForm'>
         <mat-checkbox formControlName="clientSide">Client</mat-checkbox>
         <mat-checkbox formControlName="serverSide">Server</mat-checkbox>

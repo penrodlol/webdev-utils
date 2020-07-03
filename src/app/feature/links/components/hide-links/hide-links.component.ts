@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+
 import { LinksService } from '@links/services/links.service';
+
 import { takeOne } from '@shared/operators';
+
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+import { debounceTime } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -11,9 +15,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   templateUrl: './hide-links.component.html',
   styleUrls: ['./hide-links.component.scss']
 })
-export class HideLinksComponent implements OnInit {
-  visible$: Observable<any | unknown> = this.linksService.visible();
-
+export class HideLinksComponent {
   visibleForm: FormGroup = this.fb.group({
     clientSide: null,
     serverSide: null,
@@ -23,21 +25,22 @@ export class HideLinksComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private linksService: LinksService
-  ) { }
-
-  ngOnInit(): void {
-    this.visible$.pipe(takeOne()).subscribe(visible => {
+  ) {
+    this.linksService.visible().pipe(takeOne()).subscribe(visible => {
       this.visibleForm.setValue({
         clientSide: visible.clientSide,
         serverSide: visible.serverSide,
         misc: visible.misc
-      })
-    });
+      }, { emitEvent: false });
+    })
 
     this.visibleForm
       .valueChanges
-      .pipe(untilDestroyed(this))
-      .subscribe(console.log)
+      .pipe(
+        debounceTime(200),
+        untilDestroyed(this)
+      )
+      .subscribe(links => this.linksService.updateLinks(links))
   }
 
 }
