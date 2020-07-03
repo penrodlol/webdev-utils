@@ -1,15 +1,46 @@
-<div
-    class="links-page"
-    fxLayout='row'
-    fxLayoutGap='50px'
-    fxLayoutAlign="center">
-    <div fxFlex='30' class="links-page_column mat-elevation-z8">
-        <client-side-links></client-side-links>
+<div class="links-page">
+    <div
+        class="links-page_toolbar"
+        fxLayout='column'>
+        <links-toolbar></links-toolbar>
     </div>
-    <div fxFlex='30' class="links-page_column mat-elevation-z8">
-        <server-side-links></server-side-links>
-    </div>
-    <div fxFlex='30' class="links-page_column mat-elevation-z8">
-        <misc-links></misc-links>
+    <div
+        *ngIf="visible$ | async as visible"
+        fxLayout='row'
+        fxLayoutGap='50px'
+        fxLayoutAlign="center">
+        <div
+            *ngIf="visible.clientSide"
+            fxFlex='30'
+            class="links-page_column mat-elevation-z8">
+            <span
+                fxLayout='row'
+                class="links-page_column-header">
+                Client
+            </span>
+            <client-side-links></client-side-links>
+        </div>
+        <div
+            *ngIf="visible.serverSide"
+            fxFlex='30'
+            class="links-page_column mat-elevation-z8">
+            <span
+                fxLayout='row'
+                class="links-page_column-header">
+                Server
+            </span>
+            <server-side-links></server-side-links>
+        </div>
+        <div
+            *ngIf="visible.misc"
+            fxFlex='30'
+            class="links-page_column mat-elevation-z8">
+            <span
+                fxLayout='row'
+                class="links-page_column-header">
+                Misc
+            </span>
+            <misc-links></misc-links>
+        </div>
     </div>
 </div>

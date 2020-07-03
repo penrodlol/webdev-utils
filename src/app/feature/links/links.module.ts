@@ -10,11 +10,12 @@ import { DialogModule } from '@shared/dialog/dialog.module';
 
 import { LinksPageComponent } from './components/links-page/links-page.component';
 import { LinksService } from './services/links.service';
-import { LinksConfigurationComponent } from './components/links-configuration/links-configuration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClientSideLinksComponent } from './components/client-side-links/client-side-links.component';
 import { ServerSideLinksComponent } from './components/server-side-links/server-side-links.component';
 import { MiscLinksComponent } from './components/misc-links/misc-links.component';
+import { LinksToolbarComponent } from './components/links-toolbar/links-toolbar.component';
+import { HideLinksComponent } from './components/hide-links/hide-links.component';
 
 const routes: Routes = [
   { path: '', component: LinksPageComponent } 
@@ -23,10 +24,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     LinksPageComponent,
-    LinksConfigurationComponent,
     ClientSideLinksComponent,
     ServerSideLinksComponent,
-    MiscLinksComponent
+    MiscLinksComponent,
+    LinksToolbarComponent,
+    HideLinksComponent
   ],
   imports: [
     CommonModule,

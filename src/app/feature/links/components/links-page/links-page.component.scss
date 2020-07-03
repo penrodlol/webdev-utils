@@ -1,39 +1,51 @@
 @import 'variables';
 
 .links-page {
-    ::ng-deep {
-        .mat-table {
-            width: 100%;
-            background: none;
+    &_column {
+        height: 80vh;
+        background-color: $beta-background;
+
+        &-header {
+            color: $purple;
+            padding: 10px;
         }
-
-        .mat-row {
-            cursor: pointer;
-
-            &:hover {
-                background: $charlie-background;
-                box-shadow: $z8-elevation;
-
-                .mat-cell { color: $purple; }
-            }
-        }
-
-        .mat-column {
-            &-name {
-                color: $alpha-color;
-                padding-right: 15px;
-            }
-
-            &-url {
-                color: $beta-color;
-                font-size: $smallest-font;
-            }            
-        }
-
     }
 
-    &_column {
-        height: 85vh;
-        background-color: $beta-background;
+    &_toolbar {
+        width: 96%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    ::ng-deep {
+        .mat {
+            &-table {
+                width: 100%;
+                background: none;
+            }
+
+            &-row {
+                cursor: pointer;
+
+                &:hover {
+                    background: $charlie-background;
+                    box-shadow: $z8-elevation;
+    
+                    .mat-cell { color: $purple; }
+                }
+            }
+
+            &-column {
+                &-name {
+                    color: $alpha-color;
+                    padding-right: 15px;
+                }
+    
+                &-url {
+                    color: $beta-color;
+                    font-size: $smallest-font;
+                }
+            }
+        }
     }
 }

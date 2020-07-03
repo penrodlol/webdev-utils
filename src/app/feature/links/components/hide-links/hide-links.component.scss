@@ -1,0 +1,10 @@
+@import 'variables';
+
+.hide-links {
+    font-weight: bold;
+
+    .mat-checkbox {
+        &:not(:last-child) { margin-right: 30px; }
+        ::ng-deep &-label { font-size: $extra-small-font; }
+    }
+}

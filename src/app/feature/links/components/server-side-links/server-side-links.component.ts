@@ -20,4 +20,6 @@ export class ServerSideLinksComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open = (url: string) => window.open(url);
+
 }

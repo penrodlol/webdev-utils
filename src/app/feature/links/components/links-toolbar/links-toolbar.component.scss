@@ -1,0 +1,16 @@
+@import 'variables';
+
+.links-toolbar {
+    background-color: $charlie-background;
+
+    &_title {
+        color: $alpha-color;
+        padding-left: 10px;
+        font-size: $extra-large-font;
+    }
+
+    .mat-divider {
+        height: 70%;
+        margin: 0 20px;
+    }
+}
