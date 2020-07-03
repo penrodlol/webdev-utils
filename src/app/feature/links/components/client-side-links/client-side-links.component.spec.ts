@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LinkViewComponent } from './link-view.component';
+import { ClientSideLinksComponent } from './client-side-links.component';
 
-describe('LinkViewComponent', () => {
-  let component: LinkViewComponent;
-  let fixture: ComponentFixture<LinkViewComponent>;
+describe('ClientSideLinksComponent', () => {
+  let component: ClientSideLinksComponent;
+  let fixture: ComponentFixture<ClientSideLinksComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LinkViewComponent ]
+      declarations: [ ClientSideLinksComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LinkViewComponent);
+    fixture = TestBed.createComponent(ClientSideLinksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -38,23 +38,27 @@ export class LinksService implements OnDestroy {
     .pipe(map((metaResponse: any) => metaResponse?.meta));
 
 
-  links = (): Observable<{newTab: boolean, nodes: ILinkListNode[]} | unknown> => combineLatest(
-    this.metaData(),
-    this.clientSide().valueChanges(),
-    this.serverSide().valueChanges(),
-    this.misc().valueChanges(),
-  ).pipe(
-    map(([meta, client, server, misc]: [ILinksMeta, ILink[], ILink[], ILink[]]) => {
-      return {
-        newTab: meta ? meta.newTab : false,
-        nodes: [
-          { parent: 'Client-Side', children: client, hidden: meta ? meta.hidden.clientSide : false },
-          { parent: 'Server-Side', children: server, hidden: meta ? meta.hidden.serverSide : false },
-          { parent: 'Misc', children: misc, hidden: meta ? meta.hidden.misc : false }
-        ]
-      }
-    })
-  );
+  // links = (): Observable<{newTab: boolean, nodes: ILinkListNode[]} | unknown> => combineLatest(
+  //   this.metaData(),
+  //   this.clientSide().valueChanges(),
+  //   this.serverSide().valueChanges(),
+  //   this.misc().valueChanges(),
+  // ).pipe(
+  //   map(([meta, client, server, misc]: [ILinksMeta, ILink[], ILink[], ILink[]]) => {
+  //     return {
+  //       newTab: meta ? meta.newTab : false,
+  //       nodes: [
+  //         { parent: 'Client-Side', children: client, hidden: meta ? meta.hidden.clientSide : false },
+  //         { parent: 'Server-Side', children: server, hidden: meta ? meta.hidden.serverSide : false },
+  //         { parent: 'Misc', children: misc, hidden: meta ? meta.hidden.misc : false }
+  //       ]
+  //     }
+  //   })
+  // );
+
+  clientSide = (): Observable<ILink[] | unknown> => this.firestoreService.links().collection(Links.CLIENT_SIDE).valueChanges();
+  serverSide = (): Observable<ILink[] | unknown> => this.firestoreService.links().collection(Links.SERVER_SIDE).valueChanges();
+  misc = (): Observable<ILink[] | unknown> => this.firestoreService.links().collection(Links.MISC).valueChanges();
 
 
   selectLink = (link: ILink) => {
@@ -62,7 +66,7 @@ export class LinksService implements OnDestroy {
     sessionStorage.setItem('lastSelectedLink', JSON.stringify(link));
   }
 
-  private clientSide = () => this.firestoreService.links().collection(Links.CLIENT_SIDE);
-  private serverSide = () => this.firestoreService.links().collection(Links.SERVER_SIDE);
-  private misc = () => this.firestoreService.links().collection(Links.MISC);
+  // private clientSide = () => this.firestoreService.links().collection(Links.CLIENT_SIDE);
+  // private serverSide = () => this.firestoreService.links().collection(Links.SERVER_SIDE);
+  // private misc = () => this.firestoreService.links().collection(Links.MISC);
 }
