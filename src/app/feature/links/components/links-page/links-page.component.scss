@@ -11,11 +11,7 @@
         }
     }
 
-    &_toolbar {
-        width: 96%;
-        margin: 0 auto;
-        margin-bottom: 10px;
-    }
+    &_toolbar { margin-bottom: 10px; }
 
     ::ng-deep {
         .mat {

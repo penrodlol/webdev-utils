@@ -4,10 +4,10 @@ import { Links, LinksMeta } from '@shared/enums/links.enum';
 import { FirestoreService } from '@shared/firestore/firestore.service';
 
 import { ILink } from '@links/models/link.interface';
+import { IVisibleLinks } from '@links/models/visible-links.interface';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IVisibleLinks } from '@links/models/visible-links.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,6 @@ export class LinksService {
 
   updateLinks = (links: IVisibleLinks) => this.firestoreService.links().set({visible: links});
 
-  private metaDataProp = (prop: string) => (source: Observable<any>) => source.pipe(map(data => data[prop]))
+  private metaDataProp = (prop: string) => (source: Observable<any>) => source.pipe(map(data => data ? data[prop] : null))
 
 }
