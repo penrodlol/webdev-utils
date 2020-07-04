@@ -5,7 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@external/material.module';
 
-import { PipesModule } from '@shared/pipes/pipes.module';
 import { DialogModule } from '@shared/dialog/dialog.module';
 
 import { LinksPageComponent } from './components/links-page/links-page.component';
@@ -36,7 +35,6 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    PipesModule,
     DialogModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
