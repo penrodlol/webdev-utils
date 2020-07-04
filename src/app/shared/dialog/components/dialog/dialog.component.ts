@@ -15,6 +15,9 @@ export class DialogComponent {
     private dialog: MatDialogRef<any>
   ) { }
 
-  dismiss = () => this.dialog.close();
+  dismiss() {
+    this.data.disabledStatus.complete();
+    this.dialog.close();
+  }
 
 }

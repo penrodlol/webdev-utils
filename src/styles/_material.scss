@@ -17,8 +17,16 @@
 
 .mat-form-field {
     color: $alpha-color;
-    &-label { color: $alpha-color !important; }
+
+    &-label,
     &-outline { color: $alpha-color !important; }
+
+    &-hint-wrapper .mat-hint,
+    &-required-marker { color: $purple !important; }
+
+    &-invalid .mat-input-element { caret-color: $purple !important; }
+
+    .mat-error { color: $invalid; }
 }
 
 .mat-checkbox {

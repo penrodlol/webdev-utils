@@ -40,7 +40,7 @@ export class HideLinksComponent {
         debounceTime(200),
         untilDestroyed(this)
       )
-      .subscribe(links => this.linksService.updateLinks(links))
+      .subscribe(links => this.linksService.updateVisibleLinks(links))
   }
 
 }

@@ -25,7 +25,8 @@
         *ngIf="data.button2"
         mat-raised-button
         class="mat-dialog-actions_button2"
-        [mat-dialog-close]="data.sharedData ? data.sharedData : true">
+        [mat-dialog-close]="data.sharedData ? data.sharedData : true"
+        [disabled]='data.disabledStatus | async'>
         {{data.button2}}
     </button>
 </div>

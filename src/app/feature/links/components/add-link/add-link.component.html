@@ -1,0 +1,21 @@
+<div class="add-link">
+    <p class="add-link_help">Please specify a name of your choice followed by its url.</p>
+    <form [formGroup]='addLinkForm'>
+        <mat-form-field appearance="outline">
+            <mat-label>NAME</mat-label>
+            <input
+                matInput
+                formControlName="name"
+                required>
+            <mat-error *ngIf="!name">Please specify a name</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>URL</mat-label>
+            <input
+                matInput
+                formControlName="url"
+                required>
+            <mat-error *ngIf="!url">Please specify a url</mat-error>
+        </mat-form-field>
+    </form>
+</div>

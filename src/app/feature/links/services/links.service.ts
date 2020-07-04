@@ -29,7 +29,9 @@ export class LinksService {
 
   misc = (): Observable<ILink[] | unknown> => this.firestoreService.links().collection(Links.MISC).valueChanges();
 
-  updateLinks = (links: IVisibleLinks) => this.firestoreService.links().set({visible: links});
+  updateVisibleLinks = (visibleLinks: IVisibleLinks) => this.firestoreService.links().set({visible: visibleLinks});
+
+  addLink = (link: ILink,  collection: Links.CLIENT_SIDE | Links.SERVER_SIDE | Links.MISC) => this.firestoreService.links().collection(collection).add(link);
 
   private metaDataProp = (prop: string) => (source: Observable<any>) => source.pipe(map(data => data ? data[prop] : null))
 

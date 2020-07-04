@@ -16,7 +16,7 @@
         }
     }
     @else if $type == 'warning' {
-        background-color: #ffb005;
+        background-color: $warning;
         color: #000;
         .mat-icon {
             &_type:before {
@@ -27,7 +27,7 @@
         }
     }
     @else if $type == 'error' {
-        background-color: #ca1717;
+        background-color: $invalid;
         .mat-icon {
             &_type:before {
                 content: '\E000';

@@ -7,7 +7,6 @@ export class SessionStorageRemovalService {
 
   removeStoreValues() {
     sessionStorage.removeItem('uid');
-    sessionStorage.removeItem('lastSelectedLink');
   }
 
 }

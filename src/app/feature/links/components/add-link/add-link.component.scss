@@ -1,0 +1,14 @@
+@import 'variables';
+
+.add-link {
+    font-size: $extra-small-font;
+
+    &_help {
+        font-size: $small-font;
+        color: $beta-color;
+    }
+
+    .mat-form-field {
+        display: block;
+    }
+}

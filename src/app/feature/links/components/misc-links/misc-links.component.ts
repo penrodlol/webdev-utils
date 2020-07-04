@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DialogService } from '@shared/dialog/services/dialog.service';
+import { Links } from '@shared/enums/links.enum';
+
 import { LinksService } from '@links/services/links.service';
 import { ILink } from '@links/models/link.interface';
+import { AddLinkComponent } from '@links/components/add-link/add-link.component';
 
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'misc-links',
@@ -14,12 +18,24 @@ export class MiscLinksComponent implements OnInit {
   misc$: Observable<ILink[] | unknown> = this.linksService.misc();
 
   constructor(
-    private linksService: LinksService
+    private linksService: LinksService,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
   }
 
   open = (url: string) => window.open(url);
+
+  addMiscLink() {
+    this.dialogService.openDialog({
+      title: 'New Misc Link',
+      type: 'general',
+      component: AddLinkComponent,
+      button1: 'Cancel',
+      button2: 'Add',
+      disabledStatus: new BehaviorSubject(true)
+    }).subscribe(link => this.linksService.addLink(link, Links.MISC));
+  }
 
 }

@@ -16,6 +16,7 @@ import { ServerSideLinksComponent } from './components/server-side-links/server-
 import { MiscLinksComponent } from './components/misc-links/misc-links.component';
 import { LinksToolbarComponent } from './components/links-toolbar/links-toolbar.component';
 import { HideLinksComponent } from './components/hide-links/hide-links.component';
+import { AddLinkComponent } from './components/add-link/add-link.component';
 
 const routes: Routes = [
   { path: '', component: LinksPageComponent } 
@@ -28,7 +29,8 @@ const routes: Routes = [
     ServerSideLinksComponent,
     MiscLinksComponent,
     LinksToolbarComponent,
-    HideLinksComponent
+    HideLinksComponent,
+    AddLinkComponent
   ],
   imports: [
     CommonModule,
