@@ -1,7 +1,7 @@
 <links-header
     header='Server'
     (editLinksToggle)='isEditingServerLinks = $event'
-    (addLinkToggle)='addServerLink()'>
+    (addLinkToggle)='toggleServerLink()'>
 </links-header>
 <table
     mat-table
@@ -21,11 +21,13 @@
             *matCellDef='let element'
             class="links-page_column-actions">
             <button
-                mat-icon-button>
+                mat-icon-button
+                (click)='toggleServerLink(element)'>
                 <mat-icon>edit</mat-icon>
             </button>
             <button
-                mat-icon-button>
+                mat-icon-button
+                (click)='deleteServerLink(element)'>
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

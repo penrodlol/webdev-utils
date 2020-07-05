@@ -25,7 +25,7 @@ export class DialogService {
       position: { top: '50px' },
       data
     }).afterClosed().pipe(
-      tap(() => data.disabledStatus.complete()),
+      tap(() => data.disabledStatus?.complete()),
       takeOne()
     );
   }

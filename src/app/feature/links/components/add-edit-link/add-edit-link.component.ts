@@ -3,19 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { DialogData } from '@shared/dialog/models/dialog.model';
+
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-add-link',
-  templateUrl: './add-link.component.html',
-  styleUrls: ['./add-link.component.scss']
+  selector: 'app-add-edit-link',
+  templateUrl: './add-edit-link.component.html',
+  styleUrls: ['./add-edit-link.component.scss']
 })
-export class AddLinkComponent implements OnInit {
+export class AddEditLinkComponent implements OnInit {
 
-  addLinkForm: FormGroup = this.fb.group({
-    name: this.fb.control(null, Validators.required),
-    url: this.fb.control(null, Validators.required)
+  linkForm: FormGroup = this.fb.group({
+    name: this.fb.control(this.data.sharedData?.name, Validators.required),
+    url: this.fb.control(this.data.sharedData?.url, Validators.required)
   });
 
   constructor(
@@ -24,12 +25,16 @@ export class AddLinkComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.addLinkForm
+    this.linkForm
       .valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(link => {
         this.data.disabledStatus.next(link.name && link.url ? false : true);
-        this.data.sharedData = link;
+        this.data.sharedData = {
+          ...this.data.sharedData,
+          name: link.name,
+          url: link.url
+        };
       })
   }
 

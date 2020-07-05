@@ -5,7 +5,7 @@ import { Links } from '@shared/enums/links.enum';
 
 import { LinksService } from '@links/services/links.service';
 import { ILink } from '@links/models/link.interface';
-import { AddLinkComponent } from '@links/components/add-link/add-link.component';
+import { AddEditLinkComponent } from '@links/components/add-edit-link/add-edit-link.component';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -29,15 +29,22 @@ export class MiscLinksComponent implements OnInit {
 
   open = (url: string) => !this.isEditingMiscLinks ? window.open(url) : null;
 
-  addMiscLink() {
+  toggleMiscLink(link?: ILink) {
     this.dialogService.openDialog({
-      title: 'New Misc Link',
+      title: `${!link ? 'Add' : 'Edit'} Misc Link`,
       type: 'general',
-      component: AddLinkComponent,
+      component: AddEditLinkComponent,
       button1: 'Cancel',
-      button2: 'Add',
-      disabledStatus: new BehaviorSubject(true)
-    }).subscribe(link => this.linksService.addLink(link, Links.MISC));
+      button2: !link ? 'Add' : 'Update',
+      disabledStatus: new BehaviorSubject(true),
+      sharedData: link
+    }).subscribe(response => {
+      !link ?
+        this.linksService.add(response, Links.MISC) :
+        this.linksService.update(response, Links.MISC);
+    })
   }
+
+  deleteMiscLink = (link: ILink) => this.linksService.delete(link, Links.MISC);
 
 }

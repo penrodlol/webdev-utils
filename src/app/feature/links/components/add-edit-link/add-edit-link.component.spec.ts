@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddLinkComponent } from './add-link.component';
+import { AddEditLinkComponent } from './add-edit-link.component';
 
 describe('AddLinkComponent', () => {
-  let component: AddLinkComponent;
-  let fixture: ComponentFixture<AddLinkComponent>;
+  let component: AddEditLinkComponent;
+  let fixture: ComponentFixture<AddEditLinkComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddLinkComponent ]
+      declarations: [ AddEditLinkComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddLinkComponent);
+    fixture = TestBed.createComponent(AddEditLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

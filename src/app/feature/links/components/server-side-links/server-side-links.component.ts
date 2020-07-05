@@ -5,7 +5,7 @@ import { Links } from '@shared/enums/links.enum';
 
 import { LinksService } from '@links/services/links.service';
 import { ILink } from '@links/models/link.interface';
-import { AddLinkComponent } from '@links/components/add-link/add-link.component';
+import { AddEditLinkComponent } from '@links/components/add-edit-link/add-edit-link.component';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -29,15 +29,22 @@ export class ServerSideLinksComponent implements OnInit {
 
   open = (url: string) => !this.isEditingServerLinks ? window.open(url) : null;
 
-  addServerLink() {
+  toggleServerLink(link?: ILink) {
     this.dialogService.openDialog({
-      title: 'Add Server-Side Link',
+      title: `${!link ? 'Add' : 'Edit'} Server-Side Link`,
       type: 'general',
-      component: AddLinkComponent,
+      component: AddEditLinkComponent,
       button1: 'Cancel',
-      button2: 'Add',
-      disabledStatus: new BehaviorSubject(true)
-    }).subscribe(link => this.linksService.addLink(link, Links.SERVER_SIDE));
+      button2: !link ? 'Add' : 'Update',
+      disabledStatus: new BehaviorSubject(true),
+      sharedData: link
+    }).subscribe(response => {
+      !link ?
+        this.linksService.add(response, Links.SERVER_SIDE) :
+        this.linksService.update(response, Links.SERVER_SIDE);
+    })
   }
+
+  deleteServerLink = (link: ILink) => this.linksService.delete(link, Links.SERVER_SIDE);
 
 }

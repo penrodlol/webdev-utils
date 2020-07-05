@@ -1,7 +1,7 @@
 <links-header
     header='Client'
     (editLinksToggle)='isEditingClientLinks = $event'
-    (addLinkToggle)='addClientLink()'>
+    (addLinkToggle)='toggleClientLink()'>
 </links-header>
 <table
     mat-table
@@ -20,11 +20,14 @@
             mat-cell
             *matCellDef='let element'
             class="links-page_column-actions">
-            <button mat-icon-button>
+            <button
+                mat-icon-button
+                (click)='toggleClientLink(element)'>
                 <mat-icon>edit</mat-icon>
             </button>
             <button
-                mat-icon-button>
+                mat-icon-button
+                (click)='deleteClientLink(element)'>
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

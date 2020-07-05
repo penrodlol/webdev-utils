@@ -16,7 +16,7 @@ export class DialogComponent {
   ) { }
 
   dismiss() {
-    this.data.disabledStatus.complete();
+    this.data.disabledStatus?.complete();
     this.dialog.close();
   }
 

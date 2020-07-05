@@ -13,6 +13,8 @@
             .mat-icon {
                 font-size: $large-font;
                 color: $beta-color;
+
+                &:hover { color: $purple; }
             }
         }
     }

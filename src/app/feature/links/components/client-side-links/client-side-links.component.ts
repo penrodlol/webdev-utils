@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { DialogService } from '@shared/dialog/services/dialog.service';
 import { Links } from '@shared/enums/links.enum';
 
 import { LinksService } from '@links/services/links.service';
 import { ILink } from '@links/models/link.interface';
-import { AddLinkComponent } from '@links/components/add-link/add-link.component';
+import { AddEditLinkComponent } from '@links/components/add-edit-link/add-edit-link.component';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   templateUrl: './client-side-links.component.html',
   styleUrls: ['./client-side-links.component.scss']
 })
-export class ClientSideLinksComponent implements OnInit {
+export class ClientSideLinksComponent {
   clientSide$: Observable<ILink[] | unknown> = this.linksService.clientSide();
 
   isEditingClientLinks = false;
@@ -24,19 +24,24 @@ export class ClientSideLinksComponent implements OnInit {
     private dialogService: DialogService
   ) { }
 
-  ngOnInit(): void { }
-
   open = (url: string) => !this.isEditingClientLinks ? window.open(url) : null;
 
-  addClientLink() {
+  toggleClientLink(link?: ILink) {
     this.dialogService.openDialog({
-      title: 'Add Client-Side Link',
+      title: `${!link ? 'Add' : 'Edit'} Client-Side Link`,
       type: 'general',
-      component: AddLinkComponent,
+      component: AddEditLinkComponent,
       button1: 'Cancel',
-      button2: 'Add',
-      disabledStatus: new BehaviorSubject(true)
-    }).subscribe(link => this.linksService.addLink(link, Links.CLIENT_SIDE));
+      button2: !link ? 'Add' : 'Update',
+      disabledStatus: new BehaviorSubject(true),
+      sharedData: link
+    }).subscribe(response => {
+      !link ?
+        this.linksService.add(response, Links.CLIENT_SIDE) :
+        this.linksService.update(response, Links.CLIENT_SIDE);
+    })
   }
+
+  deleteClientLink = (link: ILink) => this.linksService.delete(link, Links.CLIENT_SIDE);
 
 }
