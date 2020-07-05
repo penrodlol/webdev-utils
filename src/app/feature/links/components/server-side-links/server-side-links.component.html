@@ -1,14 +1,8 @@
-<mat-toolbar
-    fxLayout='row'
-    class="links-page_column-header">
-    Server
-    <span fxFlex></span>
-    <button
-        mat-icon-button
-        (click)='addServerLink()'>
-        <mat-icon>add</mat-icon>
-    </button>
-</mat-toolbar>
+<links-header
+    header='Server'
+    (editLinksToggle)='isEditingServerLinks = $event'
+    (addLinkToggle)='addServerLink()'>
+</links-header>
 <table
     mat-table
     [dataSource]="serverSide$ | async">
@@ -21,6 +15,21 @@
         <td mat-cell *matCellDef='let element'>{{element.url}}</td>
     </ng-container>
 
-    <tr mat-row *matRowDef='let row; columns: ["name","url"]' (click)='open(row.url)'></tr>
+    <ng-container matColumnDef='edit'>
+        <td mat-cell *matCellDef='let element'>
+            <mat-icon class="links-page_column-header_edit">edit</mat-icon>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef='remove'>'
+        <td mat-cell *matCellDef='let element'>
+            <mat-icon>delete</mat-icon>
+        </td>
+    </ng-container>
+
+    <tr mat-row
+        *matRowDef='let row; columns: isEditingServerLinks ? ["name", "url", "edit", "remove"] : ["name","url"]'
+        (click)='open(row.url)'>
+    </tr>
 
 </table>

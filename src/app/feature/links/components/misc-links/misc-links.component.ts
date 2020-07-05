@@ -17,6 +17,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class MiscLinksComponent implements OnInit {
   misc$: Observable<ILink[] | unknown> = this.linksService.misc();
 
+  isEditingMiscLinks = false;
+
   constructor(
     private linksService: LinksService,
     private dialogService: DialogService
@@ -25,7 +27,7 @@ export class MiscLinksComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open = (url: string) => window.open(url);
+  open = (url: string) => !this.isEditingMiscLinks ? window.open(url) : null;
 
   addMiscLink() {
     this.dialogService.openDialog({

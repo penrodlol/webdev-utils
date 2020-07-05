@@ -17,6 +17,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ServerSideLinksComponent implements OnInit {
   serverSide$: Observable<ILink[] | unknown> = this.linksService.serverSide();
 
+  isEditingServerLinks = false;
+
   constructor(
     private linksService: LinksService,
     private dialogService: DialogService
@@ -25,7 +27,7 @@ export class ServerSideLinksComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open = (url: string) => window.open(url);
+  open = (url: string) => !this.isEditingServerLinks ? window.open(url) : null;
 
   addServerLink() {
     this.dialogService.openDialog({

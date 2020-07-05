@@ -16,6 +16,7 @@ import { MiscLinksComponent } from './components/misc-links/misc-links.component
 import { LinksToolbarComponent } from './components/links-toolbar/links-toolbar.component';
 import { HideLinksComponent } from './components/hide-links/hide-links.component';
 import { AddLinkComponent } from './components/add-link/add-link.component';
+import { LinksHeaderComponent } from './components/links-header/links-header.component';
 
 const routes: Routes = [
   { path: '', component: LinksPageComponent } 
@@ -29,7 +30,8 @@ const routes: Routes = [
     MiscLinksComponent,
     LinksToolbarComponent,
     HideLinksComponent,
-    AddLinkComponent
+    AddLinkComponent,
+    LinksHeaderComponent
   ],
   imports: [
     CommonModule,
