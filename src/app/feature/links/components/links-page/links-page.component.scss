@@ -5,14 +5,14 @@
         height: 80vh;
         background-color: $beta-background;
 
-        ::ng-deep &-header {
-            color: $purple;
-            padding: 10px;
-            height: 40px;
-            background-color: transparent;
-            font-size: $small-font;
-
-            &_edit { font-size: 20px; }
+        ::ng-deep &-actions {
+            padding: 0 3px 0 0 !important;
+            text-align: end;
+            
+            .mat-icon {
+                font-size: $large-font;
+                color: $beta-color;
+            }
         }
     }
 

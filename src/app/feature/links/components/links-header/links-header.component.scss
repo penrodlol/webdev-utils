@@ -1,0 +1,11 @@
+@import 'variables';
+
+.links-header {
+    color: $purple;
+    padding: 10px;
+    height: 40px;
+    background-color: transparent;
+    font-size: $small-font;
+
+    &_edit { font-size: 20px; }
+}

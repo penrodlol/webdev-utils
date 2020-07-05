@@ -1,12 +1,12 @@
 <mat-toolbar
-    class="links-page_column-header">
+    class="links-header">
     {{header}}
     <span fxFlex></span>
     <button
         *ngIf="!isEditing"
         mat-icon-button
         (click)='editLinks()'>
-    <mat-icon>edit</mat-icon>
+    <mat-icon class="links-header_edit">edit</mat-icon>
     </button>
     <button
         *ngIf="isEditing"
