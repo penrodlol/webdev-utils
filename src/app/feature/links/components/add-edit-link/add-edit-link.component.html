@@ -15,7 +15,7 @@
                 matInput
                 formControlName="url"
                 required>
-            <mat-error *ngIf="!!linkForm.get('url').value">Please specify a url</mat-error>
+            <mat-error *ngIf="!linkForm.get('url').value">Please specify a url</mat-error>
         </mat-form-field>
     </form>
 </div>
