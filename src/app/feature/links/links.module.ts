@@ -18,6 +18,7 @@ import { HideLinksComponent } from './components/hide-links/hide-links.component
 import { AddEditLinkComponent } from './components/add-edit-link/add-edit-link.component';
 import { LinksHeaderComponent } from './components/links-header/links-header.component';
 import { LinkDeletionWarningComponent } from './components/link-deletion-warning/link-deletion-warning.component';
+import { LinksConfigurationComponent } from './components/links-configuration/links-configuration.component';
 
 const routes: Routes = [
   { path: '', component: LinksPageComponent } 
@@ -33,7 +34,8 @@ const routes: Routes = [
     HideLinksComponent,
     AddEditLinkComponent,
     LinksHeaderComponent,
-    LinkDeletionWarningComponent
+    LinkDeletionWarningComponent,
+    LinksConfigurationComponent
   ],
   imports: [
     CommonModule,
