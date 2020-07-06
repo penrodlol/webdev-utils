@@ -1,0 +1,10 @@
+@import 'variables';
+
+.link-deletion-warning {
+    &_statement {
+        color: $purple;
+        margin-bottom: 20px;
+    }
+
+    .mat-checkbox { font-size: $extra-small-font; }
+}

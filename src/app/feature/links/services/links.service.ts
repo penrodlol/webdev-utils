@@ -27,6 +27,10 @@ export class LinksService {
       map(visible => visible ? visible : { clientSide: true, serverSide: true, misc: true, })
     );
 
+  deleteWarning = (): Observable<boolean | unknown> => this.firestoreService.links()
+    .valueChanges()
+    .pipe(this.metaDataProp(LinksMeta.DELETE_WARNING));
+
   clientSide = (): Observable<ILink[] | unknown> => this.firestoreService.links()
     .collection(Links.CLIENT_SIDE)
     .snapshotChanges()
@@ -42,7 +46,9 @@ export class LinksService {
     .snapshotChanges()
     .pipe(this.handlePayload());
 
-  updateVisibleLinks = (visibleLinks: IVisibleLinks) => this.firestoreService.links().set({visible: visibleLinks});
+  updateVisibleLinks = (visibleLinks: IVisibleLinks) => this.firestoreService.links().update({visible: visibleLinks});
+
+  updateDeleteWarning = (deleteWarning: boolean) => this.firestoreService.links().update({deleteWarning});
 
   add = (link: ILink,  collection: LinksCollection) => this.firestoreService.links()
     .collection(collection)

@@ -6,6 +6,7 @@
     <mat-icon class="mat-icon_close" (click)='dismiss()'>close</mat-icon>
 </h1>
 <div mat-dialog-content>
+    <p *ngIf="data.message">{{data.message}}</p>
     <ng-template
         *ngIf='data.component'
         appDialogComponentInjector
@@ -25,7 +26,7 @@
         *ngIf="data.button2"
         mat-raised-button
         class="mat-dialog-actions_button2"
-        [mat-dialog-close]="data.sharedData ? data.sharedData : true"
+        [mat-dialog-close]="data.sharedData != null ? data.sharedData : true"
         [disabled]='data.disabledStatus | async'>
         {{data.button2}}
     </button>

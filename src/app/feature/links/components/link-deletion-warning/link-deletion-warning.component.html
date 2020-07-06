@@ -1,0 +1,6 @@
+<div class="link-deletion-warning">
+    <p><i class="link-deletion-warning_statement">{{link.name}} - {{link.url}}</i> will be permanently removed.</p>
+    <mat-checkbox (change)="handleDontShowAgain($event.checked)">
+        Don't show me again
+    </mat-checkbox>
+</div>

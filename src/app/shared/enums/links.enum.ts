@@ -1,5 +1,6 @@
 export enum LinksMeta {
-    VISIBLE = 'visible'
+    VISIBLE = 'visible',
+    DELETE_WARNING = 'deleteWarning'
 }
 
 export enum Links {
