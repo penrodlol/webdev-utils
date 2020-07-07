@@ -15,7 +15,7 @@ export class DialogService {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(data: DialogData): Observable<any> {
+  openDialog(data: DialogData, disabledClose: boolean = false): Observable<any> {
     return this.dialog.open(DialogComponent, {
       minWidth: '30vw',
       maxWidth: '50vw',
@@ -23,6 +23,7 @@ export class DialogService {
       maxHeight: '50vh',
       backdropClass: 'dialog-backdrop',
       position: { top: '50px' },
+      disableClose: disabledClose,
       data
     }).afterClosed().pipe(
       tap(() => data.disabledStatus?.complete()),

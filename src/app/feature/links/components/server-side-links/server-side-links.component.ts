@@ -40,7 +40,7 @@ export class ServerSideLinksComponent implements OnInit {
       button2: !link ? 'Add' : 'Update',
       disabledStatus: new BehaviorSubject(true),
       sharedData: link
-    }).subscribe(response => {
+    }, true).subscribe(response => {
       !link ?
         this.linksService.add(response, Links.SERVER_SIDE) :
         this.linksService.update(response, Links.SERVER_SIDE);
