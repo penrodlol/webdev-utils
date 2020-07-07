@@ -24,7 +24,7 @@ export class LinksToolbarComponent {
       component: LinksConfigurationComponent,
       button1: 'Cancel',
       button2: 'Save',
-    }, true).subscribe(linksConfiguration => {
+    }).subscribe(linksConfiguration => {
       this.linksService.updateDeleteWarning(linksConfiguration.deleteWarning);
     })
   }
