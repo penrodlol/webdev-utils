@@ -52,13 +52,16 @@ export class LinksService {
 
   add = (link: ILink,  collection: LinksCollection) => this.firestoreService.links()
     .collection(collection)
-    .add(link);
+    .add({
+      ...link,
+      lastUpdated: new Date().getTime()
+    });
   
   update = (link: ILink, collection: LinksCollection) =>
     this.firestoreService.links().collection(collection).doc(link.id).set({
-      ...link,
       name: link.name,
-      url: link.url
+      url: link.url,
+      lastUpdated: new Date().getTime()
     });
 
   delete = (link: ILink, collection: LinksCollection) => this.firestoreService.links()
@@ -73,7 +76,8 @@ export class LinksService {
       return {
         id: doc.payload.doc.id,
         name: doc.payload.doc.data().name,
-        url: doc.payload.doc.data().url
+        url: doc.payload.doc.data().url,
+        lastUpdated: doc.payload.doc.data().lastUpated
       }
     })))
 }
