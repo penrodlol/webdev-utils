@@ -1,67 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
-import { DialogService } from '@shared/dialog/services/dialog.service';
 import { Links } from '@shared/enums/links.enum';
-import { takeOne } from '@shared/operators';
 
 import { LinksService } from '@links/services/links.service';
 import { ILink } from '@links/models/link.interface';
-import { AddEditLinkComponent } from '@links/components/add-edit-link/add-edit-link.component';
-import { LinkDeletionWarningComponent } from '@links/components/link-deletion-warning/link-deletion-warning.component';
-
-import { Observable, BehaviorSubject } from 'rxjs';
+import { LinkDialogService } from '@links/services/link-dialog/link-dialog.service';
 
 @Component({
   selector: 'client-side-links',
   templateUrl: './client-side-links.component.html',
-  styleUrls: ['./client-side-links.component.scss']
+  styleUrls: ['./client-side-links.component.scss'],
+  providers: [LinkDialogService]
 })
-export class ClientSideLinksComponent {
-  clientSide$: Observable<ILink[] | unknown> = this.linksService.clientSide();
+export class ClientSideLinksComponent implements AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  clientLinks: MatTableDataSource<ILink>;
   isEditingClientLinks = false;
 
   constructor(
     private linksService: LinksService,
-    private dialogService: DialogService
+    private linkDialogService: LinkDialogService
   ) { }
+
+  ngAfterViewInit(): void {
+    this.linksService.clientSide().subscribe(links => {
+      this.clientLinks = new MatTableDataSource(links);
+      this.clientLinks.paginator = this.paginator;
+    });
+  }
 
   open = (url: string) => !this.isEditingClientLinks ? window.open(url) : null;
 
-  toggleClientLink(link?: ILink) {
-    this.dialogService.openDialog({
-      title: `${!link ? 'Add' : 'Edit'} Client-Side Link`,
-      type: 'general',
-      component: AddEditLinkComponent,
-      button1: 'Cancel',
-      button2: !link ? 'Add' : 'Update',
-      disabledStatus: new BehaviorSubject(true),
-      sharedData: link
-    }, true).subscribe(response => {
-      !link ?
-        this.linksService.add(response, Links.CLIENT_SIDE) :
-        this.linksService.update(response, Links.CLIENT_SIDE);
-    })
-  }
+  handleClientLink = (link?: ILink) => this.linkDialogService.handleLink(Links.CLIENT_SIDE, link);
 
-  deleteClientLink(link: ILink) {
-    this.linksService.deleteWarning()
-      .pipe(takeOne())
-      .subscribe((warn: boolean) => {
-        if (warn) {
-          this.dialogService.openDialog({
-            title: 'Client-Side Link Removal',
-            type: 'warning',
-            component: LinkDeletionWarningComponent,
-            button1: 'Cancel',
-            button2: 'Delete',
-            sharedData: link
-          }).subscribe((dontShowAgainStatus: boolean) => {
-            if (dontShowAgainStatus) { this.linksService.updateDeleteWarning(false); }
-            this.linksService.delete(link, Links.CLIENT_SIDE);
-          })
-        } else { this.linksService.delete(link, Links.CLIENT_SIDE); }
-      })
-  }
+  deleteClientLink = (link: ILink) => this.linkDialogService.deleteLink(Links.CLIENT_SIDE, link);
 
 }

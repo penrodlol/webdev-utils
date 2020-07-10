@@ -26,7 +26,7 @@ export class HideLinksComponent {
     private fb: FormBuilder,
     private linksService: LinksService
   ) {
-    this.linksService.visible().pipe(takeOne()).subscribe(visible => {
+    this.linksService.visibleLinks().pipe(takeOne()).subscribe(visible => {
       this.visibleForm.setValue({
         clientSide: visible.clientSide,
         serverSide: visible.serverSide,

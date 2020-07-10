@@ -2,7 +2,7 @@
 
 .links-page {
     &_column {
-        height: 80vh;
+        height: 800px;
         background-color: $beta-background;
 
         ::ng-deep &-actions {
@@ -22,6 +22,8 @@
     &_toolbar { margin-bottom: 10px; }
 
     ::ng-deep {
+        .links-table-wrapper { height: 90%; }
+
         .mat {
             &-table {
                 width: 100%;
@@ -49,6 +51,15 @@
                     color: $beta-color;
                     font-size: $smallest-font;
                 }
+            }
+
+            &-paginator {
+                color: $purple;
+                background: transparent;
+
+                &-container { min-height: auto; }
+
+                &-range-label { display: none; }
             }
         }
     }

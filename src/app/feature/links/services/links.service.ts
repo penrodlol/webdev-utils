@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DocumentChangeAction, DocumentData } from '@angular/fire/firestore';
 
 import { Links, LinksMeta } from '@shared/enums/links.enum';
 import { FirestoreService } from '@shared/firestore/firestore.service';
@@ -15,36 +14,36 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LinksService {
-
+  
   constructor(
     private firestoreService: FirestoreService
   ) { }
 
-  visible = (): Observable<IVisibleLinks | unknown> => this.firestoreService.links()
+  visibleLinks = (): Observable<IVisibleLinks | unknown> => this.firestoreService.links()
     .valueChanges()
     .pipe(
-      this.metaDataProp(LinksMeta.VISIBLE),
+      this.firestoreService.metaDataProp(LinksMeta.VISIBLE),
       map(visible => visible ? visible : { clientSide: true, serverSide: true, misc: true, })
     );
 
   deleteWarning = (): Observable<boolean | unknown> => this.firestoreService.links()
     .valueChanges()
-    .pipe(this.metaDataProp(LinksMeta.DELETE_WARNING));
+    .pipe(this.firestoreService.metaDataProp(LinksMeta.DELETE_WARNING));
 
-  clientSide = (): Observable<ILink[] | unknown> => this.firestoreService.links()
-    .collection(Links.CLIENT_SIDE)
+  clientSide = (): Observable<ILink[]> => this.firestoreService.links()
+    .collection(Links.CLIENT_SIDE, ref => ref.orderBy('lastUpdated', 'desc'))
     .snapshotChanges()
-    .pipe(this.handlePayload());
+    .pipe(this.firestoreService.enrichDocument());
   
-  serverSide = (): Observable<ILink[] | unknown> => this.firestoreService.links()
-    .collection(Links.SERVER_SIDE)
+  serverSide = (): Observable<ILink[]> => this.firestoreService.links()
+    .collection(Links.SERVER_SIDE, ref => ref.orderBy('lastUpdated', 'desc'))
     .snapshotChanges()
-    .pipe(this.handlePayload());
+    .pipe(this.firestoreService.enrichDocument());
 
-  misc = (): Observable<ILink[] | unknown> => this.firestoreService.links()
-    .collection(Links.MISC)
+  misc = (): Observable<ILink[]> => this.firestoreService.links()
+    .collection(Links.MISC, ref => ref.orderBy('lastUpdated', 'desc'))
     .snapshotChanges()
-    .pipe(this.handlePayload());
+    .pipe(this.firestoreService.enrichDocument());
 
   updateVisibleLinks = (visibleLinks: IVisibleLinks) => this.firestoreService.links().update({visible: visibleLinks});
 
@@ -69,15 +68,4 @@ export class LinksService {
     .doc(link.id)
     .delete();
 
-  private metaDataProp = (prop: string) => (source: Observable<any>) => source.pipe(map(data => data ? data[prop] : null));
-
-  private handlePayload = () => (source: Observable<DocumentChangeAction<DocumentData>[]>): Observable<ILink[]> =>
-    source.pipe(map(collection => collection.map(doc => {
-      return {
-        id: doc.payload.doc.id,
-        name: doc.payload.doc.data().name,
-        url: doc.payload.doc.data().url,
-        lastUpdated: doc.payload.doc.data().lastUpated
-      }
-    })))
 }

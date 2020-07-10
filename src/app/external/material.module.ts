@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSlideToggleModule,
     MatCheckboxModule,
     MatTableModule,
+    MatPaginatorModule,
     MatDividerModule
   ]
 })

@@ -8,7 +8,7 @@ import { LinksService } from '@links/services/links.service';
   styleUrls: ['./links-page.component.scss']
 })
 export class LinksPageComponent implements OnInit {
-  visible$: Observable<any | unknown> = this.linksService.visible();
+  visibleLinks$: Observable<any | unknown> = this.linksService.visibleLinks();
 
   constructor(
     private linksService: LinksService
