@@ -1,0 +1,26 @@
+<div class="link-search">
+    <ng-container *ngIf="isSearching; else notSearching">
+        <form
+            class="link-search"
+            [formGroup]='linkSearchForm'>
+            <mat-form-field floatLabel='never'>
+                <input
+                    matInput
+                    formControlName="name"
+                    placeholder="Seach link">
+            </mat-form-field>
+            <button
+                mat-icon-button
+                (click)='toggleSearch(false)'>
+                <mat-icon>search_off</mat-icon>
+            </button>
+        </form>
+    </ng-container>
+    <ng-template #notSearching>
+        <button
+            mat-icon-button
+            (click)='toggleSearch(true)'>
+            <mat-icon>search</mat-icon>
+        </button>
+    </ng-template>
+</div>

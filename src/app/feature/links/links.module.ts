@@ -19,10 +19,11 @@ import { AddEditLinkComponent } from './components/add-edit-link/add-edit-link.c
 import { LinksHeaderComponent } from './components/links-header/links-header.component';
 import { LinkDeletionWarningComponent } from './components/link-deletion-warning/link-deletion-warning.component';
 import { LinksConfigurationComponent } from './components/links-configuration/links-configuration.component';
+import { LinkSearchComponent } from './components/link-search/link-search.component';
 
 const routes: Routes = [
-  { path: '', component: LinksPageComponent } 
-]
+  { path: '', component: LinksPageComponent }
+];
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ const routes: Routes = [
     AddEditLinkComponent,
     LinksHeaderComponent,
     LinkDeletionWarningComponent,
-    LinksConfigurationComponent
+    LinksConfigurationComponent,
+    LinkSearchComponent
   ],
   imports: [
     CommonModule,

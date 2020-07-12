@@ -1,0 +1,11 @@
+@import 'variables';
+
+.link-search {
+    font-size: $smallest-font;
+
+    .mat {
+        &-form-field { height: 35px; }
+
+        &-icon { font-size: $large-font; }
+    }
+}
