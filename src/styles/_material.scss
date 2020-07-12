@@ -1,6 +1,6 @@
 @import 'variables';
 
-.mat-icon { color: $purple; }
+.mat-icon { color: $purple !important; }
 
 .mat-slide-toggle {
     &-thumb { background-color: $purple !important; }
@@ -38,6 +38,14 @@
     &-checked, &:active {
         &:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element { background: $purple; }
     }
+}
+
+.mat-menu {
+    &-panel {
+        background-color: $charlie-background;
+        .mat-icon { font-size: $large-font; }
+    }
+    &-item { color: $alpha-color; }
 }
 
 .dialog-backdrop { background-color: #0000008e; }

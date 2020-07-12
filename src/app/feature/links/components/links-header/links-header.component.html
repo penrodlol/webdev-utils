@@ -3,12 +3,6 @@
     {{header}}
     <span fxFlex></span>
     <button
-        *ngIf="!isEditing"
-        mat-icon-button
-        (click)='editLinks()'>
-    <mat-icon class="links-header_edit">edit</mat-icon>
-    </button>
-    <button
         *ngIf="isEditing"
         mat-icon-button
         (click)='cancelEditing()'>
@@ -16,7 +10,22 @@
     </button>
     <button
         mat-icon-button
-        (click)='addLink()'>
-        <mat-icon>add</mat-icon>
+        [matMenuTriggerFor]="additionalActions">
+        <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #additionalActions="matMenu">
+        <button
+            *ngIf="!isEditing"
+            mat-menu-item
+            (click)='editLinks()'>
+            <mat-icon>edit</mat-icon>
+            Edit
+        </button>
+        <button
+            mat-menu-item
+            (click)='addLink()'>
+            <mat-icon>add</mat-icon>
+            Add
+        </button>
+    </mat-menu>
 </mat-toolbar>
