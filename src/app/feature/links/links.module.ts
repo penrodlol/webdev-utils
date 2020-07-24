@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@external/material.module';
 
 import { DialogModule } from '@shared/dialog/dialog.module';
+import { AutoFocusModule } from '@shared/auto-focus/auto-focus.directive';
 
 import { LinksPageComponent } from './components/links-page/links-page.component';
 import { LinksService } from './services/links.service';
@@ -45,6 +46,7 @@ const routes: Routes = [
     FlexLayoutModule,
     DialogModule,
     ReactiveFormsModule,
+    AutoFocusModule,
     RouterModule.forChild(routes)
   ],
   providers: [LinksService]

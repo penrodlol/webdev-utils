@@ -1,11 +1,13 @@
 <links-header
     header='Client'
     (editLinksToggle)='isEditingClientLinks = $event'
-    (addLinkToggle)='handleClientLink()'>
+    (addLinkToggle)='handleClientLink()'
+    (filter)='filter($event)'>
 </links-header>
 <div class="links-table-wrapper">
     <table
         mat-table
+        aria-hidden="true"
         [dataSource]="clientLinks">
 
         <ng-container matColumnDef='name'>

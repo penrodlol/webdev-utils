@@ -38,4 +38,6 @@ export class ClientSideLinksComponent implements AfterViewInit {
 
   deleteClientLink = (link: ILink) => this.linkDialogService.deleteLink(Links.CLIENT_SIDE, link);
 
+  filter = (value: string) => this.clientLinks.filter = value;
+
 }

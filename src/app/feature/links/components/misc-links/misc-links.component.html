@@ -1,11 +1,13 @@
 <links-header
     header='Misc'
     (editLinksToggle)='isEditingMiscLinks = $event'
-    (addLinkToggle)='handleMiscLink()'>
+    (addLinkToggle)='handleMiscLink()'
+    (filter)='filter($event)'>
 </links-header>
 <div class="links-table-wrapper">
     <table
         mat-table
+        aria-hidden="true"
         [dataSource]="miscLinks">
     
         <ng-container matColumnDef='name'>

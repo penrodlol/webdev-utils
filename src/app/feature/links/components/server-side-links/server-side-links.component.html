@@ -1,11 +1,13 @@
 <links-header
     header='Server'
     (editLinksToggle)='isEditingServerLinks = $event'
-    (addLinkToggle)='handleServerLink()'>
+    (addLinkToggle)='handleServerLink()'
+    (filter)='filter($event)'>
 </links-header>
 <div class="links-table-wrapper">
     <table
         mat-table
+        aria-hidden="true"
         [dataSource]="serverLinks">
     
         <ng-container matColumnDef='name'>

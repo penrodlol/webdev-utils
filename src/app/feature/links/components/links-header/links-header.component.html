@@ -2,7 +2,7 @@
     class="links-header">
     {{header}}
     <span fxFlex></span>
-    <link-search></link-search>
+    <link-search (filter)='captureFilter($event)'></link-search>
     <button
         *ngIf="isEditing"
         mat-icon-button

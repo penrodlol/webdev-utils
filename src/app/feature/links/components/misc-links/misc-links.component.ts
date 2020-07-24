@@ -38,4 +38,6 @@ export class MiscLinksComponent implements AfterViewInit {
 
   deleteMiscLink = (link: ILink) => this.linkDialogService.deleteLink(Links.MISC, link);
 
+  filter = (value: string) => this.miscLinks.filter = value;
+
 }

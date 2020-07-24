@@ -133,6 +133,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "webdev-utils"
+    }
+  },
+  "defaultProject": "webdev-utils",
+  "cli": {
+    "analytics": false
+  }
 }

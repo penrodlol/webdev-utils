@@ -8,7 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class LinksHeaderComponent {
   @Input() header: string;
   @Output() editLinksToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() addLinkToggle: EventEmitter<null> = new EventEmitter();
+  @Output() addLinkToggle: EventEmitter<null> = new EventEmitter<any>();
+  @Output() filter: EventEmitter<string> = new EventEmitter<string>();
 
   isEditing = false;
 
@@ -23,4 +24,6 @@ export class LinksHeaderComponent {
   }
 
   addLink = () => this.addLinkToggle.emit();
+
+  captureFilter = (value: string) => this.filter.emit(value);
 }

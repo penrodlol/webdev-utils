@@ -6,8 +6,10 @@
             <mat-form-field floatLabel='never'>
                 <input
                     matInput
-                    formControlName="name"
-                    placeholder="Seach link">
+                    autoFocus
+                    formControlName="value"
+                    placeholder="Seach link"
+                    [isFocused]='isSearching'>
             </mat-form-field>
             <button
                 mat-icon-button
