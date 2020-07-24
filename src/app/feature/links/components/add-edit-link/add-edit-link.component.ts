@@ -29,11 +29,11 @@ export class AddEditLinkComponent implements OnInit {
       .valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(link => {
-        this.data.disabledStatus.next(link.name && link.url ? false : true);
+        this.data.disabledStatus.next(link.name?.trim() && link.url?.trim() ? false : true);
         this.data.sharedData = {
           ...this.data.sharedData,
-          name: link.name,
-          url: link.url
+          name: link.name?.trim(),
+          url: link.url?.trim()
         };
       });
   }

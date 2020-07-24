@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, Inject } from '@angular/core';
+import { Directive, HostListener, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -13,8 +13,6 @@ import { filter } from 'rxjs/operators';
   selector: '[submitDialogOnEnter]'
 })
 export class SubmitDialogOnEnterDirective {
-  @Input() isSubmitOnEnterToggled: boolean;
-
   private readonly ENTER = 'Enter';
 
   constructor(
@@ -24,7 +22,7 @@ export class SubmitDialogOnEnterDirective {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.key === this.ENTER && this.isSubmitOnEnterToggled) {
+    if (event.key === this.ENTER && this.data.submitOnEnter) {
       this.data
         .disabledStatus
         .pipe(

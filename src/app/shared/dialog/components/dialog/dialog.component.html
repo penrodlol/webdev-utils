@@ -7,8 +7,7 @@
 </h1>
 <div
     mat-dialog-content
-    submitDialogOnEnter
-    [isSubmitOnEnterToggled]='data.submitOnEnter'>
+    submitDialogOnEnter>
     <p *ngIf="data.message">{{data.message}}</p>
     <ng-template
         *ngIf='data.component'
