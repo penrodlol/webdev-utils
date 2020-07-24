@@ -35,7 +35,7 @@ export class AddEditLinkComponent implements OnInit {
           name: link.name,
           url: link.url
         };
-      })
+      });
   }
 
 }

@@ -5,12 +5,14 @@ import { MaterialModule } from '@external/material.module';
 
 import { DialogComponent } from './components/dialog/dialog.component';
 import { DialogService } from './services/dialog.service';
-import { DialogComponentInjectorDirective } from './directives/dialog-component-injector.directive';
+import { DialogComponentInjectorDirective } from './directives/dialog-component-injector/dialog-component-injector.directive';
+import { SubmitDialogOnEnterDirective } from './directives/submit-dialog-on-enter/submit-dialog-on-enter.directive';
 
 @NgModule({
   declarations: [
     DialogComponent,
-    DialogComponentInjectorDirective
+    DialogComponentInjectorDirective,
+    SubmitDialogOnEnterDirective
   ],
   imports: [
     CommonModule,

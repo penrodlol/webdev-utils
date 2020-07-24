@@ -5,7 +5,10 @@
     {{data.title}}
     <mat-icon class="mat-icon_close" (click)='dismiss()'>close</mat-icon>
 </h1>
-<div mat-dialog-content>
+<div
+    mat-dialog-content
+    submitDialogOnEnter
+    [isSubmitOnEnterToggled]='data.submitOnEnter'>
     <p *ngIf="data.message">{{data.message}}</p>
     <ng-template
         *ngIf='data.component'

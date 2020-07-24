@@ -27,12 +27,13 @@ export class LinkDialogService {
       button1: 'Cancel',
       button2: !link ? 'Add' : 'Update',
       disabledStatus: new BehaviorSubject(true),
+      submitOnEnter: true,
       sharedData: link
     }).subscribe(response => {
       !link ?
         this.linksService.add(response, collection) :
         this.linksService.update(response, collection);
-    })
+    });
   }
 
   deleteLink(collection: LinksCollection, link: ILink) {
@@ -46,6 +47,7 @@ export class LinkDialogService {
             component: LinkDeletionWarningComponent,
             button1: 'Cancel',
             button2: 'Delete',
+            submitOnEnter: true,
             sharedData: link
           }).subscribe((dontShowAgainStatus: boolean) => {
             if (dontShowAgainStatus) { this.linksService.updateDeleteWarning(false); }

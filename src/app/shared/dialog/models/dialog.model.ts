@@ -8,5 +8,6 @@ export interface DialogData {
     button1?: string;
     button2?: string;
     disabledStatus?: BehaviorSubject<boolean>;
+    submitOnEnter?: boolean;
     sharedData?: any;
-};
+}
