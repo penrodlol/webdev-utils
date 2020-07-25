@@ -5,35 +5,70 @@
         <links-toolbar></links-toolbar>
     </div>
     <div
-        *ngIf="visibleLinks$ | async as visibleLinks"
-        fxLayout='column'
-        fxLayout.lg='row'
-        fxLayout.xl='row'
-        fxLayoutGap='50px'
+        *ngIf="(visibleLinks$ | async) as visibleLinks"
+        class="links-page_body"
+        fxLayout='row'
         fxLayoutAlign="center">
-        <div
-            *ngIf="visibleLinks.clientSide"
-            fxFlex='100'
-            fxFlex.lg='1 2 calc(15em + 20px)'
-            fxFlex.xl='1 2 calc(15em + 20px)'
-            class="links-page_column mat-elevation-z8">
-            <client-side-links></client-side-links>
-        </div>
-        <div
-            *ngIf="visibleLinks.serverSide"
-            fxFlex='100'
-            fxFlex.lg='1 2 calc(15em + 20px)'
-            fxFlex.xl='1 2 calc(15em + 20px)'
-            class="links-page_column mat-elevation-z8">
-            <server-side-links></server-side-links>
-        </div>
-        <div
-            *ngIf="visibleLinks.misc"
-            fxFlex='100'
-            fxFlex.lg='1 2 calc(15em + 20px)'
-            fxFlex.xl='1 2 calc(15em + 20px)'
-            class="links-page_column mat-elevation-z8">
-            <misc-links></misc-links>
-        </div>
+        <ng-container *ngIf="(showTabs$ | async); else showColumns">
+            <div>
+                <mat-tab-group
+                    mat-stretch-tabs
+                    class="mat-elevation-z8">
+                    <mat-tab
+                        *ngIf="visibleLinks.clientSide"
+                        label="Client">
+                        <ng-container *ngTemplateOutlet='clientLinks'></ng-container>
+                    </mat-tab>
+                    <mat-tab
+                        *ngIf="visibleLinks.serverSide"
+                        label="Server">
+                        <ng-container *ngTemplateOutlet='serverLinks'></ng-container>
+                    </mat-tab>
+                    <mat-tab
+                        *ngIf="visibleLinks.misc"
+                        label="Misc">
+                        <ng-container *ngTemplateOutlet='miscLinks'></ng-container>
+                    </mat-tab>
+                </mat-tab-group>            
+            </div>
+        </ng-container>
+        <ng-template #showColumns>
+            <div
+                fxLayoutGap='50px'>
+                <ng-container *ngIf="visibleLinks.clientSide">
+                    <ng-container *ngTemplateOutlet='clientLinks'></ng-container>
+                </ng-container>
+                <ng-container *ngIf="visibleLinks.serverSide">
+                    <ng-container *ngTemplateOutlet='serverLinks'></ng-container>
+                </ng-container>
+                <ng-container *ngIf="visibleLinks.misc">
+                    <ng-container *ngTemplateOutlet='miscLinks'></ng-container>
+                </ng-container>
+            </div>
+        </ng-template>
     </div>
 </div>
+
+<ng-template #clientLinks>
+    <div
+        fxFlex='1 2 calc(15em + 20px)'
+        class="links-page_column mat-elevation-z8">
+        <client-side-links></client-side-links>
+    </div>
+</ng-template>
+
+<ng-template #serverLinks>
+    <div
+        fxFlex='1 2 calc(15em + 20px)'
+        class="links-page_column mat-elevation-z8">
+        <server-side-links></server-side-links>
+    </div>
+</ng-template>
+
+<ng-template #miscLinks>
+    <div
+        fxFlex='1 2 calc(15em + 20px)'
+        class="links-page_column mat-elevation-z8">
+        <misc-links></misc-links>
+    </div>
+</ng-template>

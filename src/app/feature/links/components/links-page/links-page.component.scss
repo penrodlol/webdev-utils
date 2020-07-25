@@ -21,10 +21,18 @@
 
     &_toolbar { margin-bottom: 10px; }
 
+    &_body :first-child { width: 100%; }
+
     ::ng-deep {
         .links-table-wrapper { height: 90%; }
 
         .mat {
+            &-tab-label {
+                background-color: $charlie-background;
+                color: $alpha-color;
+                height: 40px;
+            }
+
             &-table {
                 width: 100%;
                 background: none;
