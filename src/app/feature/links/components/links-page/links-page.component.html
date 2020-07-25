@@ -6,24 +6,32 @@
     </div>
     <div
         *ngIf="visibleLinks$ | async as visibleLinks"
-        fxLayout='row'
+        fxLayout='column'
+        fxLayout.lg='row'
+        fxLayout.xl='row'
         fxLayoutGap='50px'
         fxLayoutAlign="center">
         <div
             *ngIf="visibleLinks.clientSide"
-            fxFlex='1 2 calc(15em + 20px)'
+            fxFlex='100'
+            fxFlex.lg='1 2 calc(15em + 20px)'
+            fxFlex.xl='1 2 calc(15em + 20px)'
             class="links-page_column mat-elevation-z8">
             <client-side-links></client-side-links>
         </div>
         <div
             *ngIf="visibleLinks.serverSide"
-            fxFlex='1 2 calc(15em + 20px)'
+            fxFlex='100'
+            fxFlex.lg='1 2 calc(15em + 20px)'
+            fxFlex.xl='1 2 calc(15em + 20px)'
             class="links-page_column mat-elevation-z8">
             <server-side-links></server-side-links>
         </div>
         <div
             *ngIf="visibleLinks.misc"
-            fxFlex='1 2 calc(15em + 20px)'
+            fxFlex='100'
+            fxFlex.lg='1 2 calc(15em + 20px)'
+            fxFlex.xl='1 2 calc(15em + 20px)'
             class="links-page_column mat-elevation-z8">
             <misc-links></misc-links>
         </div>
