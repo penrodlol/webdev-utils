@@ -12,7 +12,7 @@ import { AuthUserActions } from '@auth/actions';
 import { Store } from '@ngrx/store';
 
 import { filter, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,15 +21,24 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   authUser$: Observable<firebase.User> = this.afAuth.user;
-  showSidenav$: Observable<boolean> = this.mediaObserverSevice.query([Breakpoints.MD, Breakpoints.LG, Breakpoints.XL]);
 
   routes = WebDevUtilsRoutes;
+  showSidenav: boolean;
+  trimPadding: boolean;
 
   constructor(
     private store: Store<IAuthUserState>,
     private afAuth: AngularFireAuth,
     private mediaObserverSevice: MediaObserverService
-  ) { }
+  ) {
+    combineLatest([
+      this.mediaObserverSevice.query([Breakpoints.MD, Breakpoints.LG, Breakpoints.XL]),
+      this.mediaObserverSevice.query([Breakpoints.XS])
+    ]).subscribe(([showSidenavTrigger, trimPaddingTrigger]) => {
+      this.showSidenav = showSidenavTrigger;
+      this.trimPadding = trimPaddingTrigger;
+    });
+  }
 
   ngOnInit(): void {
     this.authUser$

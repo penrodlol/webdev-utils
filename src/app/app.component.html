@@ -24,8 +24,8 @@
     <mat-sidenav
       #sidenav
       class="primary-sidenav_navigation"
-      [mode]='(showSidenav$ | async) ? "side" : "over"'
-      [opened]='showSidenav$ | async'>
+      [mode]='showSidenav ? "side" : "over"'
+      [opened]='showSidenav'>
       <nav>
         <user-header></user-header>
         <mat-divider></mat-divider>
@@ -39,7 +39,9 @@
         </a>
     </nav>
   </mat-sidenav>
-  <div class="primary-sidenav_router-outlet">
+  <div
+    class="primary-sidenav_router-outlet"
+    [ngStyle]="{'padding': trimPadding ? '10px 15px' : '10px 30px'}">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

@@ -2,6 +2,7 @@
 
 .links-toolbar {
     background-color: $charlie-background;
+    overflow-x: auto;
 
     &_title {
         color: $alpha-color;
