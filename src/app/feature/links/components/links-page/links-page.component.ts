@@ -10,8 +10,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-links-page',
   templateUrl: './links-page.component.html',
-  styleUrls: ['./links-page.component.scss'],
-  providers: [MediaObserverService]
+  styleUrls: ['./links-page.component.scss']
 })
 export class LinksPageComponent implements OnInit {
   visibleLinks$: Observable<any | unknown> = this.linksService.visibleLinks();

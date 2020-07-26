@@ -8,7 +8,9 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @UntilDestroy()
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MediaObserverService {
 
   constructor(
