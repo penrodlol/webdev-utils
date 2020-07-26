@@ -1,16 +1,21 @@
-<div id="user-header-container">
+<div class="user-header">
     <ng-container *ngIf="photoUrl$ | async; else noPhotoUrl">
-        <img src="{{photoUrl$ | async}}" width="50" height="50">
+        <img
+            class="user-header_img"
+            src="{{photoUrl$ | async}}"
+            alt="Profile Pic"
+            width="50"
+            height="50">
     </ng-container>
     <ng-template #noPhotoUrl>
         <button
+            class="user-header_upload"
             mat-raised-button
-            color='primary'
             (click)='uploadProfileImage()'>
             Add Profile Image 
             <mat-icon>add_photo_alternate</mat-icon>
         </button>
     </ng-template>
-    <h4>{{displayName$ | async}}</h4>
-    <span>{{email$ | async}}</span>
+    <h4 class="user-header_displayName">{{displayName$ | async}}</h4>
+    <span class="user-header_email">{{email$ | async}}</span>
 </div>

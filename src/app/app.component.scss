@@ -1,26 +1,31 @@
 @import 'variables';
 
-#primary-mat-toolbar {
+.primary-toolbar {
     background-color: $beta-background;
     color: $alpha-color;
 
-    #title { cursor: pointer; }
-    #title:focus { outline:none; }
+    &_title {
+        cursor: pointer;
+        margin-left: 20px;
 
-    .mat-mini-fab.mat-accent {
+        &:focus { outline: none; }
+    }
+
+    &_menu {
         background-color: $purple;
         .mat-icon { color: $alpha-color !important;}
     }
 }
 
-#mat-sidenav-container {
+.primary-sidenav {
     height: 100%;
     padding-top: 20px;
     background-color: $alpha-background;
-    .mat-sidenav {
+
+    &_navigation {
         background-color: $charlie-background;
         color: $alpha-color;
-        min-width: 150px;
+        width: 230px;
         .mat-route {
             display: flex;
             padding-top: 10px;
@@ -28,12 +33,14 @@
             font-size: $large-font
         }   
     }
+
     .mat-divider {
         margin-top: 10px;
         margin-bottom: 10px;
         border: solid 0.8px $beta-background;
     }
-    #router-outlet-container {
+
+    &_router-outlet {
         padding: 10px 30px;
         color: $alpha-color;
     }

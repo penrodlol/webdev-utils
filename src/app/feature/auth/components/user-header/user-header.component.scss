@@ -1,12 +1,17 @@
 @import 'variables';
 
-#user-header-container {
+.user-header {
     padding: 10px;
-    img { border-radius: 50%; }
-    button {
+    
+    &_img { border-radius: 50%; }
+
+    &_upload {
         display: block;
         margin-bottom: 20px;
+        background-color: $purple;
     }
-    h4 { margin-bottom: 0; }
-    span { font-size: $extra-small-font; }
+
+    &_displayName { margin-bottom: 0; }
+
+    &_email { font-size: $extra-small-font; }
 }
