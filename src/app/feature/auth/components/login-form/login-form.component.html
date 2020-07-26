@@ -36,6 +36,7 @@
         </button>
         <button
             class="google-btn"
+            [ngStyle]="{'width': (expandGoogleLogin$ | async) ? '75%' : '50%'}"
             mat-raised-button
             (click)='googleLogin()'>
             <mat-icon svgIcon="google-logo"></mat-icon>
