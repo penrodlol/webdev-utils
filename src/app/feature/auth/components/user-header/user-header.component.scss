@@ -9,6 +9,11 @@
         display: block;
         margin-bottom: 20px;
         background-color: $purple;
+
+        .mat-icon {
+            color: $black !important;
+            font-size: $extra-large-font;
+        }
     }
 
     &_displayName { margin-bottom: 0; }
