@@ -9,12 +9,13 @@ export const authReducer = createReducer(
     on(
         AuthApiActions.loginSuccess,
         AuthUserActions.returningLogin,
-        (_state, actions) => {
+        (_, actions) => {
             return {
+                uid: actions.uid,
                 displayName: actions.displayName,
                 email: actions.email,
                 photoURL: actions.photoURL
-            }
+            };
         }
     ),
     on(
@@ -23,7 +24,7 @@ export const authReducer = createReducer(
             return {
                 ...state,
                 photoURL: actions.downloadURL
-            }
+            };
         }
     )
-)
+);

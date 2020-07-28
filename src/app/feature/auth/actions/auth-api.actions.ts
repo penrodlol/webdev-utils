@@ -2,8 +2,8 @@ import { createAction } from '@ngrx/store';
 
 export const loginSuccess = createAction(
     '[Auth/Api] Login Success',
-    (email: string, displayName: string, photoURL: string) =>
-        ({ email, displayName, photoURL })
+    (uid: string, email: string, displayName: string, photoURL: string) =>
+        ({ uid, email, displayName, photoURL })
 );
 
 export const loginFailure = createAction(

@@ -3,16 +3,17 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { WebDevUtilsRoutes } from '@routes/routes';
 
-import { IAuthUserState } from '@shared/state/auth/auth-user.state';
 import { MediaObserverService } from '@shared/media-observer/media-observer.service';
 import { Breakpoints } from '@shared/enums/breakpoints.enum';
+import { AuthSelectors } from '@shared/state/auth/selectors';
+import { WebDevUtilsState } from '@shared/state';
 
 import { AuthUserActions } from '@auth/actions';
 
 import { Store } from '@ngrx/store';
 
 import { filter, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  authUser$: Observable<firebase.User> = this.afAuth.user;
+  uid$: Observable<string> = this.store.select(AuthSelectors.selectUid);
 
   routes = WebDevUtilsRoutes;
   showSidenav: boolean;
 
   constructor(
-    private store: Store<IAuthUserState>,
+    private store: Store<WebDevUtilsState>,
     private afAuth: AngularFireAuth,
     private mediaObserverSevice: MediaObserverService
   ) {
@@ -36,18 +37,20 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authUser$
-      .pipe(
-        filter(user => user != null),
-        take(1)
-      )
-      .subscribe(user => {
-        this.store.dispatch(AuthUserActions.returningLogin(
-          user.email,
-          user.displayName,
-          user.photoURL
+    combineLatest([
+      this.afAuth.user,
+      this.uid$
+    ]).pipe(
+      filter(([auth, uid]) => auth != null && !uid),
+      take(1)
+    ).subscribe(([auth, _]) => {
+      this.store.dispatch(AuthUserActions.returningLogin(
+          auth.uid,
+          auth.email,
+          auth.displayName,
+          auth.photoURL
         ));
-      });
+    });
   }
 
   logout = () => this.store.dispatch(AuthUserActions.logout());

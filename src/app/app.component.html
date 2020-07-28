@@ -12,7 +12,7 @@
   </h1>
   <span fxFlex></span>
   <button
-    *ngIf="authUser$ | async"
+    *ngIf="uid$ | async"
     mat-icon-button
     matTooltip='Logout'
     (click)='logout()'>
@@ -27,7 +27,7 @@
       [mode]='showSidenav ? "side" : "over"'
       [opened]='showSidenav'>
       <nav>
-        <ng-container *ngIf="authUser$ | async">
+        <ng-container *ngIf="uid$ | async">
           <user-header></user-header>
           <mat-divider></mat-divider>
         </ng-container>
@@ -35,7 +35,8 @@
           mat-button
           class="mat-route"
           *ngFor="let route of routes"
-          [routerLink]='route.path'>
+          [routerLink]='route.path'
+          [ngStyle]="{'display': ((route.auth && (uid$ | async)) || !route.auth) ? 'flex' : 'none'}">
           <mat-icon>{{route.icon}}</mat-icon>
           {{route.label}}
         </a>

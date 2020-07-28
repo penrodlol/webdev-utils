@@ -6,11 +6,11 @@ import { AuthUserActions } from '@auth/actions';
 import { AuthSelectors } from '@shared/state/auth/selectors';
 import { WebDevUtilsState } from '@shared/state/index';
 import { DialogService } from '@shared/dialog/services/dialog.service';
+import { takeOne } from '@shared/operators';
 
 import { Store } from '@ngrx/store';
 
-import { Observable } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'user-header',
@@ -30,16 +30,19 @@ export class UserHeaderComponent implements OnInit {
   ngOnInit(): void { }
 
   uploadProfileImage() {
-    this.dialogService.openDialog({
-      title: 'Add Profile Image',
-      type: 'general',
-      component: ProfileImageUploadComponent
-    })
-      .pipe(takeWhile((selectedImage: File | null) => selectedImage != null))
-      .subscribe((selectedImage: File) => {
+    combineLatest([
+      this.store.select(AuthSelectors.selectUid),
+      this.dialogService.openDialog({
+        title: 'Add Profile Image',
+        type: 'general',
+        component: ProfileImageUploadComponent
+      })
+    ])
+      .pipe(takeOne())
+      .subscribe(([uid, file]) => {
         this.store.dispatch(AuthUserActions.uploadPhotoURL(
-          `profile-images/${sessionStorage.getItem('uid')}-${selectedImage.name}`,
-          selectedImage
+          `profile-images/${uid}-${file.name.replace(/[^A-Za-z0-9]/g, '')}`,
+          file
         ));
       });
   }
