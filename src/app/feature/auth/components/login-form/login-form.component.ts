@@ -4,13 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
 import { IAuthUserState } from '@shared/state/auth/auth-user.state';
-import { MediaObserverService } from '@shared/media-observer/media-observer.service';
-import { Breakpoints } from '@shared/enums/breakpoints.enum';
 
 import { AuthUserActions } from '@auth/actions';
 
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'login-form',
@@ -18,8 +15,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  expandGoogleLogin$: Observable<boolean> = this.mediaObserverService.query([Breakpoints.XS]);
-
   loginForm: FormGroup;
   passwordHidden = true;
 
@@ -27,8 +22,7 @@ export class LoginFormComponent implements OnInit {
     private store: Store<IAuthUserState>,
     private fb: FormBuilder,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private mediaObserverService: MediaObserverService
+    private domSanitizer: DomSanitizer
   ) {
     const googleSvgUrl = 'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg';
     this.matIconRegistry.addSvgIcon('google-logo', this.domSanitizer.bypassSecurityTrustResourceUrl(googleSvgUrl));

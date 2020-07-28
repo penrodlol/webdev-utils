@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@external/material.module';
 
@@ -27,6 +28,7 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     RouterModule.forChild(routes)
   ]
 })
