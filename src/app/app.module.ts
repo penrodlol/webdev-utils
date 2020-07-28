@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from '@routes/app-routing.module';
 
@@ -33,6 +34,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     MaterialModule,
     UserHeaderModule,
+    FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,

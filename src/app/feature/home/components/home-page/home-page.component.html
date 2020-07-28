@@ -1,14 +1,17 @@
 <div
     class="home-container"
-    [ngClass]="{'home-container_small': (isSmaller$ | async)}"
     fxLayout='row'
     fxLayoutGap='20px'
-    fxLayout.xs='column'
-    fxLayout.sm='column'
-    fxLayout.md='column'>
+    fxLayout.lt-lg='column'>
     <div fxFlex='50'>
-        <h1 class="home-container_slogan">One-Stop-Shop For Your Web Development Utilities</h1>
-        <p class="home-container_description">
+        <h1
+            class="home-container_slogan"
+            ngClass.lt-md="home-container_slogan-small">
+            One-Stop-Shop For Your Web Development Utilities
+        </h1>
+        <p
+            class="home-container_description"
+            ngClass.lt-md='home-container_description-small'>
             Tired of inefficiently performing those mundane tasks each day as a Web Developer?
             Well, here at Web Dev Utils, we provide assistance in that process by maximizing
             efficiency through increased functionality and greater organization of those tasks.
@@ -17,7 +20,8 @@
     </div>
     <div fxFlex='50'>
         <img
-            [src]="(isSmaller$ | async) ? 'assets/images/banner_large.png' : 'assets/images/banner.png'"
+            src='assets/images/banner.png'
+            src.lt-md='assets/images/banner_large.png'
             alt="Web Dev Utils Banner"
             class="home-container_image">
     </div>

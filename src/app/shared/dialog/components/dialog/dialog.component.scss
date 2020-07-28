@@ -23,7 +23,7 @@
                 content: '\E002';
                 color: $black;
             }
-            &_close { color: $black; }
+            &_close { color: $black !important; }
         }
     }
     @else if $type == 'error' {
@@ -33,7 +33,7 @@
                 content: '\E000';
                 color: $alpha-color;
             }
-            &_close { color: $alpha-color; }
+            &_close { color: $alpha-color !important; }
         }
     }
 }

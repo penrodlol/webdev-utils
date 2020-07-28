@@ -32,7 +32,7 @@ export class HideLinksComponent {
         serverSide: visible.serverSide,
         misc: visible.misc
       }, { emitEvent: false });
-    })
+    });
 
     this.visibleForm
       .valueChanges
@@ -40,7 +40,7 @@ export class HideLinksComponent {
         debounceTime(200),
         untilDestroyed(this)
       )
-      .subscribe(links => this.linksService.updateVisibleLinks(links))
+      .subscribe(links => this.linksService.updateVisibleLinks(links));
   }
 
 }

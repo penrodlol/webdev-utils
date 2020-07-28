@@ -1,22 +1,5 @@
 @import 'variables';
 
-@mixin handleSmall($isSmall) {
-    @if $isSmall {
-        .home-container {
-            &_slogan {
-                font-size: 2.125rem;
-                margin: 0;
-            }
-
-            &_description {
-                font-size: 1rem;
-                line-height: 30px;
-                margin-bottom: 0;
-            }
-        }
-    }
-}
-
 .home-container {
     &:first-child,
     &:last-child { padding: 20px; }
@@ -24,14 +7,23 @@
     &_slogan {
         font-size: 3.125rem;
         color: $purple;
+
+        &-small {
+            font-size: 2.125rem;
+            margin: 0;
+        }
     }
 
     &_description {
         font-size: 1.25rem;
         line-height: 40px;
+
+        &-small {
+            font-size: 1rem;
+            line-height: 30px;
+            margin-bottom: 0;
+        }
     }
 
     &_image { width: 100%; }
-
-    &_small { @include handleSmall(true); }
 }

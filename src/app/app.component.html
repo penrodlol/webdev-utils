@@ -10,7 +10,7 @@
     routerLink='home'>
     Web Dev Utils
   </h1>
-  <span style="flex: 1 1 auto;"></span>
+  <span fxFlex></span>
   <button
     *ngIf="authUser$ | async"
     mat-icon-button
@@ -43,7 +43,7 @@
   </mat-sidenav>
   <div
     class="primary-sidenav_router-outlet"
-    [ngStyle]="{'padding': trimPadding ? '10px 15px' : '10px 30px'}">
+    [ngStyle.lt-sm]="{'padding': '10px 15px'}">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

@@ -1,11 +1,6 @@
 <mat-toolbar
     class="links-header">
-    <span
-        fxHide.xs
-        fxHide.sm
-        fxHide.md>
-        {{header}}
-    </span>
+    <span fxHide.lt-lg>{{header}}</span>
     <span fxFlex></span>
     <link-search (filter)='captureFilter($event)'></link-search>
     <button

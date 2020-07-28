@@ -12,7 +12,7 @@ import { AuthUserActions } from '@auth/actions';
 import { Store } from '@ngrx/store';
 
 import { filter, take } from 'rxjs/operators';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -24,20 +24,15 @@ export class AppComponent implements OnInit {
 
   routes = WebDevUtilsRoutes;
   showSidenav: boolean;
-  trimPadding: boolean;
 
   constructor(
     private store: Store<IAuthUserState>,
     private afAuth: AngularFireAuth,
     private mediaObserverSevice: MediaObserverService
   ) {
-    combineLatest([
-      this.mediaObserverSevice.query([Breakpoints.MD, Breakpoints.LG, Breakpoints.XL]),
-      this.mediaObserverSevice.query([Breakpoints.XS])
-    ]).subscribe(([showSidenavTrigger, trimPaddingTrigger]) => {
-      this.showSidenav = showSidenavTrigger;
-      this.trimPadding = trimPaddingTrigger;
-    });
+      this.mediaObserverSevice
+        .query([Breakpoints.MD, Breakpoints.LG, Breakpoints.XL])
+        .subscribe(isShown => this.showSidenav = isShown);
   }
 
   ngOnInit(): void {
