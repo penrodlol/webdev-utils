@@ -5,6 +5,10 @@
     (filter)='filter($event)'>
 </links-header>
 <div class="links-table-wrapper">
+    <loading
+        *ngIf="isLoading"
+        top='50'>
+    </loading>
     <table
         mat-table
         aria-hidden="true"

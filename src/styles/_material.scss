@@ -51,4 +51,9 @@
 
 .mat-ink-bar { background-color: $purple !important; }
 
+.mat-progress-spinner,
+.mat-spinner {
+    circle { stroke: $purple; }
+}
+
 .dialog-backdrop { background-color: #0000008e; }

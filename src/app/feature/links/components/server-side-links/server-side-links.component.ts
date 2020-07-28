@@ -19,6 +19,7 @@ export class ServerSideLinksComponent implements AfterViewInit {
 
   serverLinks: MatTableDataSource<ILink>;
   isEditingServerLinks = false;
+  isLoading = true;
 
   constructor(
     private linksService: LinksService,
@@ -29,6 +30,7 @@ export class ServerSideLinksComponent implements AfterViewInit {
     this.linksService.serverSide().subscribe(links => {
       this.serverLinks = new MatTableDataSource(links);
       this.serverLinks.paginator = this.paginator;
+      this.isLoading = false;
     });
   }
 

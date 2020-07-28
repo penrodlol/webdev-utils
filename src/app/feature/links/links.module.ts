@@ -7,6 +7,7 @@ import { MaterialModule } from '@external/material.module';
 
 import { DialogModule } from '@shared/dialog/dialog.module';
 import { AutoFocusModule } from '@shared/auto-focus/auto-focus.directive';
+import { LoadingModule } from '@shared/loading/loading.module';
 
 import { LinksPageComponent } from './components/links-page/links-page.component';
 import { LinksService } from './services/links.service';
@@ -47,6 +48,7 @@ const routes: Routes = [
     DialogModule,
     ReactiveFormsModule,
     AutoFocusModule,
+    LoadingModule,
     RouterModule.forChild(routes)
   ],
   providers: [LinksService]

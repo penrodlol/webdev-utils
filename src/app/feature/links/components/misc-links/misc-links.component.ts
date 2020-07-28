@@ -19,6 +19,7 @@ export class MiscLinksComponent implements AfterViewInit {
 
   miscLinks: MatTableDataSource<ILink>;
   isEditingMiscLinks = false;
+  isLoading = true;
 
   constructor(
     private linksService: LinksService,
@@ -29,6 +30,7 @@ export class MiscLinksComponent implements AfterViewInit {
     this.linksService.misc().subscribe(links => {
       this.miscLinks = new MatTableDataSource(links);
       this.miscLinks.paginator = this.paginator;
+      this.isLoading = false;
     });
   }
 
