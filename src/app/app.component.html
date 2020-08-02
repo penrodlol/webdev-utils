@@ -27,8 +27,10 @@
       [mode]='showSidenav ? "side" : "over"'
       [opened]='showSidenav'>
       <nav>
-        <user-header></user-header>
-        <mat-divider></mat-divider>
+        <ng-container *ngIf="showUserHeader">
+          <user-header></user-header>
+          <mat-divider></mat-divider>
+        </ng-container>
         <a
           mat-button
           class="mat-route"

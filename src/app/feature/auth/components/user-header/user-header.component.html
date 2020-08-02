@@ -1,9 +1,9 @@
 <div class="user-header">
     <ng-container *ngIf="(uid$ | async); else showLoginSignup">
-        <ng-container *ngIf="photoUrl$ | async; else noPhotoUrl">
+        <ng-container *ngIf="(photoUrl$ | async) as photoUrl; else noPhotoUrl">
             <img
                 class="user-header_img"
-                src="{{photoUrl$ | async}}"
+                [src]="photoUrl"
                 alt="Profile Pic"
                 width="50"
                 height="50">

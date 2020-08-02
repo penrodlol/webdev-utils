@@ -12,7 +12,7 @@ import { AuthUserActions } from '@auth/actions';
 
 import { Store } from '@ngrx/store';
 
-import { filter, take } from 'rxjs/operators';
+import { filter, take, tap } from 'rxjs/operators';
 import { Observable, combineLatest } from 'rxjs';
 
 @Component({
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 
   routes = WebDevUtilsRoutes;
   showSidenav: boolean;
+  showUserHeader = false;
 
   constructor(
     private store: Store<WebDevUtilsState>,
@@ -42,6 +43,7 @@ export class AppComponent implements OnInit {
       this.uid$
     ]).pipe(
       take(1),
+      tap(() => this.showUserHeader = true),
       filter(([auth, uid]) => auth != null && !uid),
     ).subscribe(([auth, _]) => {
       this.store.dispatch(AuthUserActions.returningLogin(
