@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 import { ProfileImageUploadComponent } from '@auth/components/profile-image-upload/profile-image-upload.component';
 import { AuthUserActions } from '@auth/actions';
@@ -18,7 +17,7 @@ import { Observable, combineLatest } from 'rxjs';
   templateUrl: './user-header.component.html',
   styleUrls: ['./user-header.component.scss']
 })
-export class UserHeaderComponent implements OnInit {
+export class UserHeaderComponent {
   uid$: Observable<string> = this.store.select(AuthSelectors.selectUid);
   displayName$: Observable<string> = this.store.select(AuthSelectors.selectDisplayName);
   email$: Observable<string> = this.store.select(AuthSelectors.selectEmail);
@@ -26,11 +25,8 @@ export class UserHeaderComponent implements OnInit {
 
   constructor(
     private store: Store<WebDevUtilsState>,
-    private dialogService: DialogService,
-    private router: Router
+    private dialogService: DialogService
   ) { }
-
-  ngOnInit(): void { }
 
   uploadProfileImage() {
     combineLatest([
@@ -49,6 +45,4 @@ export class UserHeaderComponent implements OnInit {
         ));
       });
   }
-
-  routeToAuth = (endpoint: string) => this.router.navigate([`auth/${endpoint}`]);
 }
