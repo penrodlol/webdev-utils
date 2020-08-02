@@ -16,6 +16,7 @@ import { UserHeaderModule } from '@auth/components/user-header/user-header.modul
 import { AuthEffects } from '@shared/state/auth/effects/auth.effects';
 import { reducers } from '@shared/state/index';
 import { metaReducers } from '@shared/metareducers/index';
+import { LoadingModule } from '@shared/loading/loading.module';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
@@ -35,6 +36,7 @@ import { AppComponent } from './app.component';
     MaterialModule,
     UserHeaderModule,
     FlexLayoutModule,
+    LoadingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
