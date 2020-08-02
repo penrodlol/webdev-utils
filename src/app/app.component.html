@@ -27,10 +27,8 @@
       [mode]='showSidenav ? "side" : "over"'
       [opened]='showSidenav'>
       <nav>
-        <ng-container *ngIf="uid$ | async">
-          <user-header></user-header>
-          <mat-divider></mat-divider>
-        </ng-container>
+        <user-header></user-header>
+        <mat-divider></mat-divider>
         <a
           mat-button
           class="mat-route"

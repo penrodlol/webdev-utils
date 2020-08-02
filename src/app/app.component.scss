@@ -4,16 +4,16 @@
     background-color: $beta-background;
     color: $alpha-color;
 
+    &_menu {
+        background-color: $purple;
+        .mat-icon { color: $alpha-color !important;}
+    }
+
     &_title {
         cursor: pointer;
         margin-left: 20px;
 
         &:focus { outline: none; }
-    }
-
-    &_menu {
-        background-color: $purple;
-        .mat-icon { color: $alpha-color !important;}
     }
 }
 
@@ -26,12 +26,19 @@
         background-color: $charlie-background;
         color: $alpha-color;
         width: 230px;
-        .mat-route {
-            display: flex;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            font-size: $large-font
-        }   
+        
+        .mat {
+            &-route {
+                display: flex;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            &-route,
+            &-icon {
+                font-size: $large-font;
+            }
+        }
     }
 
     .mat-divider {

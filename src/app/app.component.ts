@@ -38,11 +38,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     combineLatest([
-      this.afAuth.user,
+      this.afAuth.authState,
       this.uid$
     ]).pipe(
+      take(1),
       filter(([auth, uid]) => auth != null && !uid),
-      take(1)
     ).subscribe(([auth, _]) => {
       this.store.dispatch(AuthUserActions.returningLogin(
           auth.uid,

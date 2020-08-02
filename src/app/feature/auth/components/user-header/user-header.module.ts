@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@external/material.module';
 
@@ -12,7 +13,8 @@ import { UserHeaderComponent } from './user-header.component';
   imports: [
     CommonModule,
     MaterialModule,
-    DialogModule
+    DialogModule,
+    FlexLayoutModule
   ],
   exports: [UserHeaderComponent]
 })

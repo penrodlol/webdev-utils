@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['']);
+const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['auth']);
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth' },
-  {
-    path: 'auth',
-    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
-  },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: 'home',
     loadChildren: () => import('@home/home.module').then(m => m.HomeModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'links',

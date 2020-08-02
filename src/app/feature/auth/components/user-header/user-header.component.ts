@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ProfileImageUploadComponent } from '@auth/components/profile-image-upload/profile-image-upload.component';
 import { AuthUserActions } from '@auth/actions';
@@ -18,13 +19,15 @@ import { Observable, combineLatest } from 'rxjs';
   styleUrls: ['./user-header.component.scss']
 })
 export class UserHeaderComponent implements OnInit {
+  uid$: Observable<string> = this.store.select(AuthSelectors.selectUid);
   displayName$: Observable<string> = this.store.select(AuthSelectors.selectDisplayName);
   email$: Observable<string> = this.store.select(AuthSelectors.selectEmail);
   photoUrl$: Observable<string> = this.store.select(AuthSelectors.selectPhotoUrl);
 
   constructor(
     private store: Store<WebDevUtilsState>,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
@@ -46,4 +49,6 @@ export class UserHeaderComponent implements OnInit {
         ));
       });
   }
+
+  routeToAuth = (endpoint: string) => this.router.navigate([`auth/${endpoint}`]);
 }

@@ -19,4 +19,23 @@
     &_displayName { margin-bottom: 0; }
 
     &_email { font-size: $extra-small-font; }
+
+    &_auth {
+        padding-top: 10px;
+
+        .mat-icon { font-size: $large-font; }
+
+        &-login {
+            background-color: inherit;
+            color: $alpha-color;
+            border: solid 1px $purple;
+        }
+
+        &-signup {
+            background-color: $purple;
+            color: $black;
+            
+            .mat-icon { color: $black !important; }
+        }
+    }
 }
