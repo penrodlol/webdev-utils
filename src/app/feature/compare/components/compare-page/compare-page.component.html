@@ -1,0 +1,27 @@
+<div
+    class="compare-page"
+    fxLayoutAlign='center'>
+    <div
+        fxHide.lt-md
+        fxFill>
+        <compare-table [dataSource]='compareFeatures'></compare-table>
+    </div>
+    <div
+        fxHide.gt-sm
+        fxFill>
+        <div
+            fxLayout='column'
+            fxLayoutGap='30px'>
+            <compare-panels
+                [compareFeatures]='compareFeatures'
+                header='No Account'
+                conditionalIcons='true'>
+            </compare-panels>
+            <compare-panels
+                [compareFeatures]='compareFeatures'
+                header='Account'
+                conditionalIcons='false'>
+            </compare-panels>
+        </div>
+    </div>
+</div>

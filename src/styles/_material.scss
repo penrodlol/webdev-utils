@@ -1,59 +1,86 @@
 @import 'variables';
 
-.mat-icon { color: $purple !important; }
+.mat {
+    &-icon { color: $purple !important; }
 
-.mat-slide-toggle {
-    &-thumb { background-color: $purple !important; }
-    &.mat-checked .mat-slide-toggle-bar { background-color: #bd93f9b0; }
-}
+    &-slide-toggle {
+        &-thumb { background-color: $purple !important; }
+        &.mat-checked .mat-slide-toggle-bar { background-color: #bd93f9b0; }
+    }
 
-.mat-card-header {
-    margin-bottom: 20px;
-    &-text {
-        width: 100%;
+    &-card-header {
+        margin-bottom: 20px;
+        &-text {
+            width: 100%;
+            color: $alpha-color;
+        }
+    }
+
+    &-form-field {
         color: $alpha-color;
-    }
-}
-
-.mat-form-field {
-    color: $alpha-color;
-
-    &-label,
-    &-outline { color: $alpha-color !important; }
-
-    &-hint-wrapper .mat-hint,
-    &-required-marker { color: $purple !important; }
-
-    &-invalid .mat-input-element { caret-color: $purple !important; }
-
-    .mat-error { color: $invalid; }
-}
-
-.mat-checkbox {
-    &-indeterminate.mat-accent &-background,
-    &-checked.mat-accent &-background {
-        background-color: $purple;
+    
+        &-label,
+        &-outline { color: $alpha-color !important; }
+    
+        &-hint-wrapper .mat-hint,
+        &-required-marker { color: $purple !important; }
+    
+        &-invalid .mat-input-element { caret-color: $purple !important; }
+    
+        .mat-error { color: $invalid; }
     }
 
-    &-checked, &:active {
-        &:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element { background: $purple; }
+    &-checkbox {
+        &-indeterminate.mat-accent &-background,
+        &-checked.mat-accent &-background {
+            background-color: $purple;
+        }
+    
+        &-checked, &:active {
+            &:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element { background: $purple; }
+        }
     }
-}
 
-.mat-menu {
-    &-panel {
-        background-color: $charlie-background;
-        .mat-icon { font-size: $large-font; }
+    &-menu {
+        &-panel {
+            background-color: $charlie-background;
+            .mat-icon { font-size: $large-font; }
+        }
+    
+        &-item { color: $alpha-color; }
     }
 
-    &-item { color: $alpha-color; }
-}
+    &-ink-bar { background-color: $purple !important; }
 
-.mat-ink-bar { background-color: $purple !important; }
+    &-progress-spinner,
+    &-spinner {
+        circle { stroke: $purple; }
+    }
 
-.mat-progress-spinner,
-.mat-spinner {
-    circle { stroke: $purple; }
+    &-tooltip { font-size: $small-font; }
+
+    &-header {
+        &-row { background-color: $delta-background; }
+
+        &-cell { border-bottom: solid 1px $black !important; }
+    }
+
+    &-row { background-color: $beta-background; }
+
+    &-expansion-panel {
+        background: $beta-background;
+
+        &-header {
+            background: $beta-background !important;
+            
+            &-title {
+                color: $alpha-color;
+                align-items: center;
+            }
+        }
+
+        &-body { color: $alpha-color; }
+    }
 }
 
 .dialog-backdrop { background-color: #0000008e; }

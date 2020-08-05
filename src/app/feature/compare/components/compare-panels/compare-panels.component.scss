@@ -1,0 +1,22 @@
+@import 'variables';
+
+.compare-panels {
+    &_header { font-size: $largest-font; }
+
+    &_info {
+        &-title {
+            margin-left: 10px;
+            font-size: $large-font;
+        }
+    }
+
+    &_no-access { color: $invalid !important; }
+
+    .mat-divider {
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: solid 0.8px $purple;
+        width: 75%;
+    }
+}

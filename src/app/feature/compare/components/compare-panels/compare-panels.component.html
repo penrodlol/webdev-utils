@@ -1,0 +1,26 @@
+<div
+    fxLayout='column'
+    class="compare-panels">
+    <strong
+      fxLayoutAlign='center center'
+      class="compare-panels_header">
+      {{header}}
+    </strong>
+    <mat-divider></mat-divider>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let feature of compareFeatures">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              <ng-container *ngIf="(feature.auth && conditionalIcons); else noAccountRequired">
+                  <mat-icon class="compare-panels_no-access">close</mat-icon>
+              </ng-container>
+              <ng-template #noAccountRequired>
+                  <mat-icon>check</mat-icon>
+              </ng-template>
+              <span class="compare-panels_info-title">{{feature.info.title}}</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{feature.info.description}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -1,0 +1,35 @@
+@import 'variables';
+
+.compare-table {
+    &_info {
+        &-title {
+            color: $alpha-color;
+            font-size: $large-font;
+        }
+
+        &-description {
+            font-size: $small-font;
+            color: $beta-color;
+            margin: 0;
+        }
+    }
+
+    &_no-access { color: $invalid !important; }
+
+    ::ng-deep {
+        .mat {
+            &-header-cell {
+                color: $alpha-color;
+                font-size: $largest-font;
+                text-align: center;
+            }
+
+            &-cell {
+                padding-top: 15px;
+                padding-bottom: 15px;
+
+                &:not(:first-child) { text-align: center; }
+            }
+        }
+    }
+}

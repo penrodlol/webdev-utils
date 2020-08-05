@@ -8,6 +8,7 @@
       "@auth/*": ["src/app/feature/auth/*"],
       "@home/*": ["src/app/feature/home/*"],
       "@links/*": ["src/app/feature/links/*"],
+      "@compare/*": ["src/app/feature/compare/*"],
       "@shared/*": ["src/app/shared/*"]
     },
     "outDir": "./dist/out-tsc",

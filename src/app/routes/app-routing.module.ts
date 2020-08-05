@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'compare',
+    loadChildren: () => import('@compare/compare.module').then(m => m.CompareModule)
+  },
+  {
     path: 'links',
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToAuth },
