@@ -45,7 +45,15 @@
           [routerLink]='route.path'
           [ngStyle]="{'display': ((route.auth && (uid$ | async)) || !route.auth) ? 'flex' : 'none'}"
           (click)="!showSidenav ? sidenav.toggle() : ''">
-          <mat-icon>{{route.icon}}</mat-icon>
+          <ng-container *ngIf="route.isSvg; else isMaterialIcon">
+            <svg-icon
+              [src]="route.icon"
+              class="svg-icon_large">
+            </svg-icon>
+          </ng-container>
+          <ng-template #isMaterialIcon>
+            <mat-icon>{{route.icon}}</mat-icon>
+          </ng-template>
           {{route.label}}
         </a>
     </nav>

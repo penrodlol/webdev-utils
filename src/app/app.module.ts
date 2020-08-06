@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { AppRoutingModule } from '@routes/app-routing.module';
 
@@ -37,6 +38,7 @@ import { AppComponent } from './app.component';
     UserHeaderModule,
     FlexLayoutModule,
     LoadingModule,
+    AngularSvgIconModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,

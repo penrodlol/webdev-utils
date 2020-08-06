@@ -1,0 +1,16 @@
+@import 'variables';
+
+@mixin svg-width($width: $large-font) {
+    fill: $purple;
+    svg { width: $width !important; }
+}
+
+.svg-icon {
+    &_smallest { @include svg-width($smallest-font); }
+    &_extra-small { @include svg-width($extra-small-font); }
+    &_small { @include svg-width($small-font); }
+    &_medium { @include svg-width($medium-font); }
+    &_large { @include svg-width(); }
+    &_extra-large { @include svg-width($extra-large-font); }
+    &_largest { @include svg-width($largest-font); }
+}

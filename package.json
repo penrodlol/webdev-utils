@@ -28,6 +28,7 @@
     "@ngrx/entity": "^9.1.0",
     "@ngrx/store": "^9.1.0",
     "@ngrx/store-devtools": "^9.1.0",
+    "angular-svg-icon": "^10.0.0",
     "firebase": "^7.14.0",
     "mat-file-upload": "^1.5.0",
     "rxjs": "~6.5.5",

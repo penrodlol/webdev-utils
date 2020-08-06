@@ -1,6 +1,6 @@
 @import 'variables';
 
-@mixin handleType($type) {
+@mixin handle-type($type) {
     @if $type == 'general' {
         background-color: $charlie-background;
         .mat-icon {
@@ -38,10 +38,10 @@
     }
 }
 
-.general { @include handleType('general'); }
-.confirmation { @include handleType('confirmation'); }
-.warning { @include handleType('warning'); }
-.error { @include handleType('error'); }
+.general { @include handle-type('general'); }
+.confirmation { @include handle-type('confirmation'); }
+.warning { @include handle-type('warning'); }
+.error { @include handle-type('error'); }
 
 ::ng-deep {
     .mat-dialog-container {
