@@ -1,14 +1,16 @@
-<div
-    class="json-pretty-result"
-    [style.height.vh]='76'
-    [ngSwitch]="view$ | async">
-    <div *ngSwitchCase="JSON_PRETTY_VIEW_TYPES.STRINGIFY">
-        <pre class="json-pretty-result_stringify">
-            {{json$ | async | json}}
-        </pre>
+<ng-container *ngIf="(json$ | async) as prettyJson">
+    <div
+        class="json-pretty-result"
+        [style.height.vh]='76'
+        [ngSwitch]="view$ | async">
+        <div *ngSwitchCase="JSON_PRETTY_VIEW_TYPES.STRINGIFY">
+            <pre class="json-pretty-result_stringify">
+                {{prettyJson | json}}
+            </pre>
+        </div>
+        <div *ngSwitchCase="JSON_PRETTY_VIEW_TYPES.TREE">
+            <json-pretty-tree></json-pretty-tree>
+        </div>
+        <div *ngSwitchDefault></div>
     </div>
-    <div *ngSwitchCase="JSON_PRETTY_VIEW_TYPES.TREE">
-        <json-pretty-tree></json-pretty-tree>
-    </div>
-    <div *ngSwitchDefault></div>
-</div>
+</ng-container>

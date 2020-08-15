@@ -8,7 +8,7 @@ export function jsonPrettyMetareducer(reducer: ActionReducer<any>) {
         switch (action.type) {
             case JsonPrettyUserActions.clearAll.type: return reducer(undefined, action);
             case JsonPrettyUserActions.destroy.type: return reducer(undefined, action);
-            default: return reducer({...state, error: null}, action);
+            default: return reducer(state, action);
         }
     };
 }

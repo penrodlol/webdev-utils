@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
+import { IJsonPrettyState } from '@json-pretty/state/json-pretty.state';
+import { JsonPrettyUserActions } from '@json-pretty/state/actions';
+
 @Component({
   selector: 'to-toolbar',
   templateUrl: './to-toolbar.component.html',
@@ -7,4 +12,9 @@ import { Component } from '@angular/core';
 })
 export class ToToolbarComponent {
 
+  constructor(
+    private store: Store<IJsonPrettyState>
+  ) { }
+
+  clear = () => this.store.dispatch(JsonPrettyUserActions.clearJson());
 }

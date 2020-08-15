@@ -4,6 +4,8 @@ import { IJsonPrettyTreeNode } from '@json-pretty/models/json-pretty-tree-node.i
 
 export const clearAll = createAction('[JSON Pretty/User] Clear All JSON');
 
+export const clearJson = createAction('[JSON Pretty/User] Clear Only JSON');
+
 export const destroy = createAction('[JSON Pretty/User] Reset All JSON');
 
 export const stringify = createAction(

@@ -9,28 +9,34 @@ export const key = 'json-pretty';
 export const reducer = createReducer(
     initialJsonPrettyState,
     on(
-        JsonPrettyUserActions.stringifySuccess,
-        (state, action) => ({
+        JsonPrettyUserActions.clearJson,
+        (state) => ({
             ...state,
+            json: null
+        })
+    ),
+    on(
+        JsonPrettyUserActions.stringifySuccess,
+        (_, action) => ({
             json: action.stringified,
-            view: JsonPrettyViewTypes.STRINGIFY
+            view: JsonPrettyViewTypes.STRINGIFY,
+            error: null
         })
     ),
     on(
         JsonPrettyUserActions.treeSuccess,
-        (state, action) => ({
-            ...state,
+        (_, action) => ({
             json: action.nodes,
-            view: JsonPrettyViewTypes.TREE
+            view: JsonPrettyViewTypes.TREE,
+            error: null
         })
     ),
     on(
         JsonPrettyUserActions.stringifyFailure,
         JsonPrettyUserActions.treeFailure,
-        (state, _) => ({
-            ...state,
-            error: 'Invalid JSON!',
+        () => ({
             json: null,
+            error: 'Invalid JSON!',
             view: null
         })
     )

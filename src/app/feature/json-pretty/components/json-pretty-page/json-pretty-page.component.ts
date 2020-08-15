@@ -19,9 +19,7 @@ export class JsonPrettyPageComponent implements OnDestroy {
     private store: Store<IJsonPrettyState>
   ) { }
 
-  ngOnDestroy(): void {
-    this.store.dispatch(JsonPrettyUserActions.destroy());
-  }
+  ngOnDestroy(): void { this.store.dispatch(JsonPrettyUserActions.destroy()); }
 
   reset = () => this.jsonPrettyForm.reset(this.json(), { emitEvent: false });
 
