@@ -18,6 +18,11 @@ $beta-color: #888;
 $purple: #bd93f9;
 $invalid: #ca1717;
 $warning: #ffb005;
+
+@function alpha-background-opacity($opacity) { @return rgb(40, 42, 54, $opacity); };
+@function beta-background-opacity($opacity) { @return rgb(49, 50, 49, $opacity); };
+@function charlie-background-opacity($opacity) { @return rgb(73, 73, 73, $opacity); };
+@function delta-background-opacity($opacity) { @return rgb(100, 100, 100, $opacity); };
 // ===========================
 
 // MISC ======================

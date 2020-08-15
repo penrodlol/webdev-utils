@@ -1,0 +1,9 @@
+@import 'variables';
+
+.json-pretty-tree {
+  padding: 12px 20px;
+
+  &_invisible { display: none; }
+
+  &_node { display: block; }
+}

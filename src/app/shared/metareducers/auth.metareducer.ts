@@ -8,5 +8,5 @@ export function logoutMetareducer(reducer: ActionReducer<any>) {
             return reducer(undefined, action);
         }
         return reducer(state, action);
-    }
+    };
 }

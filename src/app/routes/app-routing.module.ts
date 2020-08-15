@@ -19,10 +19,14 @@ const routes: Routes = [
     loadChildren: () => import('@compare/compare.module').then(m => m.CompareModule)
   },
   {
+    path: 'json-pretty',
+    loadChildren: () => import('@json-pretty/json-pretty.module').then(m => m.JsonPrettyModule)
+  },
+  {
     path: 'links',
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToAuth },
-    loadChildren: () => import('@links/links.module').then(m => m.LinksModule),
+    loadChildren: () => import('@links/links.module').then(m => m.LinksModule)
   }
 ];
 

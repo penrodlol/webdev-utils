@@ -1,0 +1,15 @@
+@mixin toolbar(
+    $height: auto,
+    $background: transparent,
+    $padding: 0 16px,
+    $font-size: $medium-font,
+    $color: $alpha-color
+) {
+    .mat-toolbar {
+        height: $height;
+        background: $background;
+        padding: $padding;
+        font-size: $font-size;
+        color: $color;
+    }   
+}

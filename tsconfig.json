@@ -9,6 +9,7 @@
       "@home/*": ["src/app/feature/home/*"],
       "@links/*": ["src/app/feature/links/*"],
       "@compare/*": ["src/app/feature/compare/*"],
+      "@json-pretty/*": ["src/app/feature/json-pretty/*"],
       "@shared/*": ["src/app/shared/*"]
     },
     "outDir": "./dist/out-tsc",

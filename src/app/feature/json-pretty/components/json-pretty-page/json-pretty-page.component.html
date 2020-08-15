@@ -1,0 +1,51 @@
+<div
+    class="json-pretty-page"
+    fxLayout='row'
+    fxLayout.lt-lg='column'
+    fxLayoutGap='10px'>
+    <div
+        class="json-pretty-page_original mat-elevation-z8"
+        fxFlex='40'
+        [style.height.vh]='85'>
+        <div
+            fxFlexLayout='column'
+            fxLayoutGap='10px'>
+            <from-toolbar (cleared)='reset()'></from-toolbar>
+            <div
+                class="json-pretty-page_wrapper mat-elevation-z8"
+                [style.height.vh]='76'>
+                <form
+                    fxFill
+                    class="json-pretty-page_original"
+                    [formGroup]='jsonPrettyForm'>
+                    <textarea
+                        class="json-pretty-page_original-input"
+                        fxFill
+                        formControlName="json">
+                    </textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div
+        class="json-pretty-page_actions mat-elevation-z8"
+        fxFlex='20'
+        [style.height.vh]='85'>
+        <json-pretty-actions [json]="json().value"></json-pretty-actions>
+    </div>
+    <div
+        class=" json-pretty-page_pretty mat-elevation-z8"
+        fxFlex='40'
+        [style.height.vh]='85'>
+        <div
+            fxFlexLayout='column'
+            fxLayoutGap='10px'>
+            <to-toolbar></to-toolbar>
+            <div
+                class="json-pretty-page_wrapper mat-elevation-z8"
+                [style.height.vh]='76'>
+                <json-pretty-result></json-pretty-result>
+            </div>
+        </div>
+    </div>
+</div>

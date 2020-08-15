@@ -1,22 +1,34 @@
 interface IWebDevUtilsRoutes {
     path: string;
-    icon: string;
+    icon: {
+        src: string;
+        isSvg: boolean;
+    };
     label: string;
-    isSvg: boolean;
     auth: boolean;
     info?: {
-        title: string,
-        description: string
+        title: string;
+        description: string;
     };
 }
 
 const routes: IWebDevUtilsRoutes[] = [
-    { path: 'home', icon: 'home', label: 'Home', auth: false, isSvg: false },
+    {
+        path: 'home',
+        icon: {
+            src: 'home',
+            isSvg: false
+        },
+        label: 'Home',
+        auth: false
+    },
     {
         path: 'links',
-        icon: 'link',
+        icon: {
+            src: 'link',
+            isSvg: false
+        },
         label: 'Links',
-        isSvg: false,
         auth: true,
         info: {
             title: 'Archive Links',
@@ -24,13 +36,15 @@ const routes: IWebDevUtilsRoutes[] = [
         }
     },
     {
-        path: '',
-        icon: 'assets/svgs/code-json.svg',
-        label: 'Json Parser',
-        isSvg: true,
+        path: 'json-pretty',
+        icon: {
+            src: 'assets/svgs/code-json.svg',
+            isSvg: true
+        },
+        label: 'Json Pretty',
         auth: false,
         info: {
-            title: 'Json Parser',
+            title: 'Json Pretty Printer',
             description: ''
         }
     }

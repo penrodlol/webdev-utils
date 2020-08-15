@@ -1,0 +1,44 @@
+@import 'variables';
+@import 'material-mixins';
+
+.json-pretty-page {
+  ::ng-deep { @include toolbar(40px, $charlie-background); }
+
+  &_original {
+    background-color: $beta-background;
+
+    &-input {
+      background: transparent;
+      resize: none;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: $extra-small-font;
+      color: $alpha-color;
+    }
+  }
+
+  &_actions {
+    background-color: $charlie-background;
+    padding: 12px 20px;
+  }
+
+  &_pretty {
+    background-color: $beta-background;
+  }
+
+  &_wrapper {
+    border: solid 1px $beta-color;
+    border-radius: 5px;
+    margin: 0 20px;
+    background-color: delta-background-opacity(0.2);
+
+    &:hover {
+      border-width: 2px;
+      margin: 0 19px;
+    }
+
+    form { background: none; }
+  }
+}

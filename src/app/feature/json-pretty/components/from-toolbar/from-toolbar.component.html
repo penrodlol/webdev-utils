@@ -1,0 +1,11 @@
+<mat-toolbar>
+    From:
+    <span fxFlex></span>
+    <mat-error>{{error$ | async}}</mat-error>
+    <button
+        mat-icon-button
+        matTooltip='Clear All'
+        (click)='clearAll()'>
+        <mat-icon>clear</mat-icon>
+    </button>
+</mat-toolbar>

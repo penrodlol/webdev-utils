@@ -1,0 +1,19 @@
+@import 'variables';
+
+.json-pretty-result {
+    font-size: $extra-small-font;
+    overflow: auto;
+
+    div { height: inherit; }
+
+    &_stringify {
+        margin: 0;
+        padding: 12px 20px;
+        height: -webkit-fill-available;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+    }
+}
