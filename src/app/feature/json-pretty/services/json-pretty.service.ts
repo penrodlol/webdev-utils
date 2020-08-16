@@ -25,11 +25,16 @@ export class JsonPrettyService {
       }, []);
   }
 
-  download(json: object) {
-    const blob = new Blob(
-      [JSON.stringify(json, null, 2)],
-      { type: 'text/plain;charset=utf-8'}
-    );
-    saveAs(blob, uuid());
+  download = (json: object) => saveAs(this.blob(json), uuid());
+
+  expand(json: object) {
+    const url = window.URL.createObjectURL(this.blob(json));
+    window.open(url);
+    window.URL.revokeObjectURL(url);
   }
+
+  private blob = (json: object) => new Blob(
+    [JSON.stringify(json, null, 2)],
+    { type: 'text/plain;charset=utf-8'}
+  )
 }

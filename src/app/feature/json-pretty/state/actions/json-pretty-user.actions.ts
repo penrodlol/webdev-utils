@@ -10,6 +10,8 @@ export const destroy = createAction('[JSON Pretty/User] Reset All JSON');
 
 export const download = createAction('[JSON Pretty/User] Download JSON');
 
+export const expand = createAction('[JSON Pretty/User] Expand JSON');
+
 export const stringify = createAction(
     '[JSON Pretty/User] Stringify JSON',
     (original: string) => ({ original })

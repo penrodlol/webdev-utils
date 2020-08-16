@@ -39,13 +39,19 @@ export class JsonPrettyEffects {
         })
     ));
 
-    download$ = createEffect(() => this.actions$.pipe(
-        ofType(JsonPrettyUserActions.download),
+    blob$ = createEffect(() => this.actions$.pipe(
+        ofType(JsonPrettyUserActions.download, JsonPrettyUserActions.expand),
         concatMap(action => of(action).pipe(
             withLatestFrom(this.store.select(JsonPrettySelectors.selectJson))
         )),
         filter(([_, json]) => json.raw != null && json.pretty != null),
-        tap(([_, json]) => this.jsonPrettyService.download(json.raw))
+        tap(([action, json]) => {
+            if (action.type === JsonPrettyUserActions.download.type) {
+                this.jsonPrettyService.download(json.raw);
+            } else if (action.type === JsonPrettyUserActions.expand.type) {
+                this.jsonPrettyService.expand(json.raw);
+            }
+        })
     ), { dispatch: false });
 
     private parse = (json: any) => JSON.parse(json);

@@ -20,4 +20,6 @@ export class ToToolbarComponent {
 
   download = () => this.store.dispatch(JsonPrettyUserActions.download());
 
+  expand = () => this.store.dispatch(JsonPrettyUserActions.expand());
+
 }
