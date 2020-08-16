@@ -22,4 +22,6 @@ export class ToToolbarComponent {
 
   expand = () => this.store.dispatch(JsonPrettyUserActions.expand());
 
+  copy = () => this.store.dispatch(JsonPrettyUserActions.copy());
+
 }

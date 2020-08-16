@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 import { saveAs } from 'file-saver';
 import { v4 as uuid } from 'uuid';
 
 import { IJsonPrettyTreeNode } from '@json-pretty/models/json-pretty-tree-node.interface';
 
+import { Observable, of } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class JsonPrettyService {
+
+  constructor(
+    private clipboard: Clipboard
+  ) {}
+
   build(json: object): IJsonPrettyTreeNode[] {
     return Object
       .keys(json)
@@ -33,8 +41,13 @@ export class JsonPrettyService {
     window.URL.revokeObjectURL(url);
   }
 
+  copy = (json: object): Observable<boolean> => of(this.clipboard.copy(this.stringify(json)));
+
+  private stringify = (json: object) => JSON.stringify(json, null, 2);
+
   private blob = (json: object) => new Blob(
-    [JSON.stringify(json, null, 2)],
+    [this.stringify(json)],
     { type: 'text/plain;charset=utf-8'}
   )
+
 }

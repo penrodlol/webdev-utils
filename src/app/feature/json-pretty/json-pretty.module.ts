@@ -9,8 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { MatTreeModule } from '@angular/material/tree';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { StoreModule } from '@ngrx/store';
 
@@ -50,7 +52,9 @@ const routes: Routes = [
     MatFormFieldModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatSnackBarModule,
     CdkTreeModule,
+    ClipboardModule,
     MatTreeModule,
     LoadingModule,
     RouterModule.forChild(routes),

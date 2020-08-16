@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
+import { SnackbarService } from '@shared/snackbar/snackbar.service';
+
 import { JsonPrettyService } from '@json-pretty/services/json-pretty.service';
 import { JsonPrettyUserActions } from '@json-pretty/state/actions';
 import { IJsonPrettyState } from '@json-pretty/state/json-pretty.state';
 import { JsonPrettySelectors } from '@json-pretty/state/selectors';
 
-import { switchMap, map, tap, concatMap, withLatestFrom, filter } from 'rxjs/operators';
+import { switchMap, map, tap, concatMap, withLatestFrom, filter, take } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -54,11 +56,26 @@ export class JsonPrettyEffects {
         })
     ), { dispatch: false });
 
+    copy$ = createEffect(() => this.actions$.pipe(
+        ofType(JsonPrettyUserActions.copy),
+        concatMap(action => of(action).pipe(
+            withLatestFrom(this.store.select(JsonPrettySelectors.selectJson))
+        )),
+        filter(([_, json]) => json.raw != null && json.pretty != null),
+        tap(([_, json]) => {
+            this.jsonPrettyService.copy(json.raw).pipe(
+                take(1),
+                filter(isCopied => isCopied)
+            ).subscribe(() => this.snackbarService.triggerSnackBar('Copied to Clipboard!'));
+        })
+    ), { dispatch: false });
+
     private parse = (json: any) => JSON.parse(json);
 
     constructor(
         private actions$: Actions,
+        private store: Store<IJsonPrettyState>,
         private jsonPrettyService: JsonPrettyService,
-        private store: Store<IJsonPrettyState>
+        private snackbarService: SnackbarService
     ) { }
 }
