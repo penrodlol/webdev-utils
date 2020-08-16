@@ -12,13 +12,15 @@ export const reducer = createReducer(
         JsonPrettyUserActions.clearJson,
         (state) => ({
             ...state,
-            json: null
+            raw: null,
+            pretty: null
         })
     ),
     on(
         JsonPrettyUserActions.stringifySuccess,
         (_, action) => ({
-            json: action.stringified,
+            raw: action.parsed,
+            pretty: action.parsed,
             view: JsonPrettyViewTypes.STRINGIFY,
             error: null
         })
@@ -26,7 +28,8 @@ export const reducer = createReducer(
     on(
         JsonPrettyUserActions.treeSuccess,
         (_, action) => ({
-            json: action.nodes,
+            raw: action.parsed,
+            pretty: action.nodes,
             view: JsonPrettyViewTypes.TREE,
             error: null
         })
@@ -35,7 +38,8 @@ export const reducer = createReducer(
         JsonPrettyUserActions.stringifyFailure,
         JsonPrettyUserActions.treeFailure,
         () => ({
-            json: null,
+            raw: null,
+            pretty: null,
             error: 'Invalid JSON!',
             view: null
         })

@@ -17,4 +17,7 @@ export class ToToolbarComponent {
   ) { }
 
   clear = () => this.store.dispatch(JsonPrettyUserActions.clearJson());
+
+  download = () => this.store.dispatch(JsonPrettyUserActions.download());
+
 }

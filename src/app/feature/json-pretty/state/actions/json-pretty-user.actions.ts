@@ -8,6 +8,8 @@ export const clearJson = createAction('[JSON Pretty/User] Clear Only JSON');
 
 export const destroy = createAction('[JSON Pretty/User] Reset All JSON');
 
+export const download = createAction('[JSON Pretty/User] Download JSON');
+
 export const stringify = createAction(
     '[JSON Pretty/User] Stringify JSON',
     (original: string) => ({ original })
@@ -15,7 +17,7 @@ export const stringify = createAction(
 
 export const stringifySuccess = createAction(
     '[JSON Pretty/User] Stringify JSON Success',
-    (stringified: object) => ({ stringified })
+    (parsed: object) => ({ parsed })
 );
 
 export const stringifyFailure = createAction('[JSON Pretty/User] Stringify JSON Failure');
@@ -27,7 +29,7 @@ export const tree = createAction(
 
 export const treeSuccess = createAction(
     '[JSON Pretty/User] Tree JSON Success',
-    (nodes: IJsonPrettyTreeNode[]) => ({ nodes })
+    (parsed: object, nodes: IJsonPrettyTreeNode[]) => ({ parsed, nodes })
 );
 
 export const treeFailure = createAction('[JSON Pretty/User] Tree JSON Failure');

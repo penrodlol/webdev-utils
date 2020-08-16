@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./json-pretty-result.component.scss']
 })
 export class JsonPrettyResultComponent {
-  json$: Observable<object | IJsonPrettyTreeNode[]> = this.store.select(JsonPrettySelectors.selectJson);
+  json$: Observable<object | IJsonPrettyTreeNode[]> = this.store.select(JsonPrettySelectors.selectPretty);
   view$: Observable<string> = this.store.select(JsonPrettySelectors.selectView);
 
   JSON_PRETTY_VIEW_TYPES = JsonPrettyViewTypes;

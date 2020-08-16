@@ -25,7 +25,7 @@ export class JsonPrettyTreeComponent implements OnInit {
 
   ngOnInit(): void {
     this.store
-      .select(JsonPrettySelectors.selectJson)
+      .select(JsonPrettySelectors.selectPretty)
       .pipe(untilDestroyed(this))
       .subscribe((json: IJsonPrettyTreeNode[]) => {
         this.treeControl = new NestedTreeControl<IJsonPrettyTreeNode> (node => node.children);
