@@ -81,6 +81,29 @@
 
         &-body { color: $alpha-color; }
     }
+
+    &-simple-snackbar {
+        font-size: $medium-font;
+
+        &-action {
+            color: $purple;
+            
+            button { font-size: $small-font; }
+        }
+    }
+}
+
+.snackbar {
+    color: $purple;
+    font-size: $medium-font;
+    font-weight: bold;
+    border: solid 1px;
+    min-width: 300px !important;
+    
+    &_action {
+        &-true { color: $alpha-color; }
+        &-false :first-child { justify-content: center; }
+    }
 }
 
 .dialog-backdrop { background-color: #0000008e; }
