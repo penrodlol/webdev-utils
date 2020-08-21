@@ -24,8 +24,8 @@
     <mat-sidenav
       #sidenav
       class="primary-sidenav_navigation"
-      [mode]='showSidenav ? "side" : "over"'
-      [opened]='showSidenav'>
+      [mode]='(hideSidenav$ | async) ? "over" : "side"'
+      [opened]='!(hideSidenav$ | async)'>
       <nav>
         <ng-container *ngIf="showUserHeader; else isLoadingUserHeader">
           <user-header></user-header>
@@ -35,7 +35,7 @@
           <loading
             top='20'
             bottom='10'
-            [diameter]='30'>
+            diameter='30'>
           </loading>
         </ng-template>
         <a
@@ -43,12 +43,12 @@
           class="mat-route"
           *ngFor="let route of routes"
           [routerLink]='route.path'
-          [ngStyle]="{'display': ((route.auth && (uid$ | async)) || !route.auth) ? 'flex' : 'none'}"
-          (click)="!showSidenav ? sidenav.toggle() : ''">
+          [style.display]="((route.auth && (uid$ | async)) || !route.auth) ? 'flex' : 'none'"
+          (click)="onRouteClick()">
           <ng-container *ngIf="route.icon.isSvg; else isMaterialIcon">
             <svg-icon
-              [src]="route.icon.src"
-              class="svg-icon_large">
+              class="svg-icon_large"
+              [src]="route.icon.src">
             </svg-icon>
           </ng-container>
           <ng-template #isMaterialIcon>

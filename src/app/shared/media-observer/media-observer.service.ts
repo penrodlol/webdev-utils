@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { Breakpoint } from '@shared/types';
 
-import { map } from 'rxjs/operators';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @UntilDestroy()
@@ -17,11 +17,11 @@ export class MediaObserverService {
     private mediaObserver: MediaObserver
   ) { }
 
-  query = (breakpoints: Breakpoint[]): Observable<boolean> => this.mediaObserver
-    .asObservable()
-    .pipe(
-      map(medias => breakpoints.some(breakpoint => breakpoint === medias[0].mqAlias) ? true : false),
-      untilDestroyed(this)
-    )
-
+  query = (breakpoint: Breakpoint): Observable<boolean> => this.mediaObserver
+      .asObservable()
+      .pipe(
+        map(() => this.mediaObserver.isActive(breakpoint)),
+        distinctUntilChanged(),
+        untilDestroyed(this)
+      )
 }

@@ -21,7 +21,7 @@ export class DialogService {
     private mediaObserverSevice: MediaObserverService
   ) {
     this.mediaObserverSevice
-      .query([Breakpoints.XS, Breakpoints.SM])
+      .query(Breakpoints.LTMD)
       .subscribe(breakpointMatched => this.adjustDialogWidth = breakpointMatched);
   }
 

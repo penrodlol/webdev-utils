@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { WebDevUtilsRoutes } from '@routes/routes';
@@ -21,21 +22,19 @@ import { Observable, combineLatest } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
   uid$: Observable<string> = this.store.select(AuthSelectors.selectUid);
+  hideSidenav$: Observable<boolean> = this.mediaObserverSevice.query(Breakpoints.LTMD);
 
   routes = WebDevUtilsRoutes;
-  showSidenav: boolean;
   showUserHeader = false;
 
   constructor(
     private store: Store<WebDevUtilsState>,
     private afAuth: AngularFireAuth,
     private mediaObserverSevice: MediaObserverService
-  ) {
-      this.mediaObserverSevice
-        .query([Breakpoints.MD, Breakpoints.LG, Breakpoints.XL])
-        .subscribe(isShown => this.showSidenav = isShown);
-  }
+  ) { }
 
   ngOnInit(): void {
     combineLatest([
@@ -54,6 +53,8 @@ export class AppComponent implements OnInit {
         ));
     });
   }
+
+  onRouteClick = () => this.sidenav.mode === 'over' ? this.sidenav.toggle() : null;
 
   logout = () => this.store.dispatch(AuthUserActions.logout());
 }

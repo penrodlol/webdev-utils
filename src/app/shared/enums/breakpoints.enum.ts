@@ -1,7 +1,6 @@
 export enum Breakpoints {
-    XS = 'xs',
-    SM = 'sm',
-    MD = 'md',
-    LG = 'lg',
-    XL = 'xl'
+    LTSM = 'lt-sm',
+    LTMD = 'lt-md',
+    LTLG = 'lt-lg',
+    LTXL = 'lt-xl'
 }
