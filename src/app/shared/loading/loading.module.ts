@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { LoadingComponent } from './loading.component';
 
@@ -8,7 +9,7 @@ import { LoadingComponent } from './loading.component';
   declarations: [LoadingComponent],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule
+    NgxSpinnerModule
   ],
   exports: [LoadingComponent]
 })
