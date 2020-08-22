@@ -28,7 +28,7 @@
       [opened]='!(hideSidenav$ | async)'>
       <nav>
         <ng-container *ngIf="showUserHeader; else isLoadingUserHeader">
-          <user-header></user-header>
+          <user-header [sidenav]='sidenav'></user-header>
           <mat-divider></mat-divider>
         </ng-container>
         <ng-template #isLoadingUserHeader>

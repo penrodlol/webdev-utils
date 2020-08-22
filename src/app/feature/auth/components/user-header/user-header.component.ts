@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { ProfileImageUploadComponent } from '@auth/components/profile-image-upload/profile-image-upload.component';
 import { AuthUserActions } from '@auth/actions';
@@ -18,6 +19,8 @@ import { Observable, combineLatest } from 'rxjs';
   styleUrls: ['./user-header.component.scss']
 })
 export class UserHeaderComponent {
+  @Input() sidenav: MatSidenav;
+
   uid$: Observable<string> = this.store.select(AuthSelectors.selectUid);
   displayName$: Observable<string> = this.store.select(AuthSelectors.selectDisplayName);
   email$: Observable<string> = this.store.select(AuthSelectors.selectEmail);
